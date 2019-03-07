@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Font awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <!-- Aminate.css -->
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>Document</title>
+  </head>
+  <body id="body">
+    <nav class="navbar" class="navbar-fixed">
+      <span class="open-slide">
+        <a href="#" onclick="openSlideMenu()">
+          <svg width="30" height="30">
+            <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
+            <path d="M0,14 30,14" stroke="#fff" stroke-width="5"/>
+            <path d="M0,23 30,23" stroke="#fff" stroke-width="5"/>
+          </svg>
+        </a>
+      </span>
+      <ul class="navbar-nav">
+        <li>
+          <a href="index.html">Agence</a>
+        </li>
+        <li>
+          <a href="vehicules.html">Vehicules</a>
+        </li>
+        <li>
+          <a href="car-finance.html">Offer and Finance</a>
+        </li>
+        <li>
+          <a href="contact.html">Contact</a>
+        </li>
+      </ul>
+      <div id="container-header--my-account">
+        <div class="header--my-account">
+          <span>
+            <a href="register.html">Connect to my account
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </span>
+        </div>
+      </div>
+    
+    </nav>
+    <div id="side-menu" class="side-nav">
+      <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+      <a href="index.html">Home</a>
+      <a href="vehicules.html">Vehicules</a>
+      <a href="car-finance.html">Offer and Finance</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    
+    <!-- panel Icons begin -->
+    <div id="main">
+      <div id="sliderImage">
+        <img name="slide"class="big-image">
+        <div class="header-boxContent">
+          <h1 class="titleSlider">Need some fresh air?</h1>
+          <p> Do you want something new? Something who does look like you
+          </p>
+          <a href="#" id="buttonSlider" class="btn btn-default">What's new?</a>
+        </div>
+      </div>
+    </div>
+    <div class="litteWrapper">
+      <a href="#scrollDown" class="scrollDown" id="scrollDown" title="SCROLL DOWWN TO CONTINUE">
+        <i class="fas fa-angle-down"></i>
+      </a> 
+    </div>
+
+    <br/>
+    
+    <div class="contentGlobale-index">
+      <div class="headerTitle">
+        <h3>Our best seller</h3>
+      </div>
+      <!--Create an array with all the cars -->
+      <div class="container row" id="indexGallery">
+        <!--<div class="col-md-6">
+          <div id="passat" class="thumbnail">
+            <img class="imgBestSeller" src="images/passat.png" alt="...">
+            <p class="textThumb" style="text-align:center">Passat</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div id="golf" class="thumbnail">
+            <img class="imgBestSeller" src="images/golf.png" alt="...">
+            <p class="textThumb" style="text-align:center">Nouvelle polo</p>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="indexGallery">
+        <div class="col-md-6">
+          <div id="nTouareg" class="thumbnail">
+            <img class="imgBestSeller" src="images/nouvelleTouareg.png" alt="...">
+            <p class="textThumb" style="text-align:center">Nouvelle Touareg</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div id="nTiguan" class="thumbnail">
+            <img class="imgBestSeller" src="images/nouvelleTiguan.png" alt="...">
+            <p class="textThumb" style="text-align:center">nouvelle Tiguan</p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <!-- ARTICLE content -->
+    <section id="contentGlobale-article">
+      <div class="container-lg row">
+        <section id="adventure" class="col-md-6">
+          <h3 class="title-article">Volkswagen and environment</h3>
+          <h3 class="bodyText">
+            The amount of Vehicle Excise Duty (Road Fund Licence) payable on new cars varies depending on the level of CO2 (Carbon Dioxide)
+            emissions produced by the vehicle and the type of fuel used.
+
+            Discover the ‘CO2 banding’ and therefore, the amount of Vehicle Excise Duty payable on our Eco2 range.
+          </h3>
+          <a class="bodyText bodyLink" href="volkswagen and environment.html">Find out more</a>
+        </section>
+        <section id="history" class="col-md-6">
+          <h3 class="title-article">History</h3>
+          <h3 class="bodyText">
+            1899: Volkswagen Freres is founded by Louis’ two brothers, Marcel and Fernand.
+
+            1900: The world’s first saloon arrives in the market, the type B.
+
+            1902: Volkswagen produces its first engine and files a patent for the first turbo.
+
+            1903: The sales network expands and the first subsidiaries are set up outside France.
+
+          </h3>
+          <a class="bodyText bodyLink" href="history.html">Find out more</a>
+        </section>
+      </div>
+    </section>
+    
+      <!-- CUSTOMER content -->
+    <div id="contentGlobal-customers">
+      <a href="#customers" class="container-lg">
+        <span class=" common-button common-button--default">Our clients</span>
+        <ul class="overlay">
+          <li><img class="spotify" src="images/icons8-spotify.png" alt="spotify"></li>
+          <li><img class="facebook" src="images/icons8-facebook.png" alt="lyft"></li>
+          <li><img class="slack" src="images/icons8-slack.png" alt="slack"></li>
+          <li><img class="mac" src="images/icons8-client-mac.png" alt="mac"></li>
+        </ul>
+      </a>
+    </div>
+
+    <!-- beforeFooter -->
+
+    <div id="contentGlobal-beforeFooter">
+      <div class="container-lg">
+        <div class="col-md-6" id="contentFooter">
+          <h1 class="titleBeforeFooter">
+            <span>Are you ready for the adventure ? </span>
+            <br/>
+            Contact us ou create your account.
+        </div>
+        <div class="col-md-6" id="contentLink">
+          <a id="signup" href="#">Create your account</a>
+          <a id="contactUss" href="">Contact our company</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="contentGlobal-footer" style="background-color:lightgray;">
+      <div class="clearfix">
+        <div class="col">
+          <ul class="shop-box">
+            <li class="title-footer">Ownership</li>
+            <li href="#">Extended warranty</li>
+            <li href="#">Incontrol</li>
+            <li href="#">Castrol oil</li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <ul class="shop-box">
+            <li class="title-footer">Vehicules</li>
+            <li href="#" class="">Explore our Vehicules</li>
+            <li href="#" class="">Glossary</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul class="shop-box">
+            <li class="title-footer">About-us</li>
+            <li href="#" >Citroen c3 AIRCROSS</li>
+            <li href="#" >New</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul class="shop-box">
+            <li class="title-footer">Find us</li>
+            <li href="#" >Twitter</li>
+            <li href="#" >Facebook</li>
+            <li href="#" >Instagram</li>
+            <li href="#" >Google+</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul class="shop-box">
+            <li class="title-footer" href="#">Map</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+        
+      
+    <!-- build:js/secondapp.js -->
+    <script src="js/index.js"></script>
+  
+    <!-- enbuild -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+ 
+</html>
