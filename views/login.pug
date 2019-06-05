@@ -1,0 +1,26 @@
+doctype html
+head
+  // Latest compiled and minified CSS
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous')
+  // Font awesome
+  script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
+  // Aminate.css
+  //- link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css')
+  //- script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+  link(rel='stylesheet' type='text/css' href='/css/comments.css')
+
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  
+  .container-wide
+    img(src='' alt='')
+    form(method='GET' action='userpage')
+      .login-form
+        .form-group
+          input.form-control(type='text' name='username' placeholder='Username')
+        .form-group
+          input.form-control(type='password' name='password' placeholder='Password')
+        input(type='#' name='submit' value='Login')
+// enbuild
+

@@ -1,0 +1,171 @@
+doctype html
+head
+  //- Latest compiled and minified CSS
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous')
+  // Font awesome
+  script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
+  // Aminate.css
+  //- script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
+  //- //- Aminate.css
+  //- link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css')
+
+  //- meta(charset='UTF-8')
+  //- meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  //- meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  //- link(rel='stylesheet' type='text/css' href='css/style.css')
+  title Volkswaginn
+body
+
+.container
+
+
+nav.navbar navbar-light bg-light
+  span.open-slide
+    a(href='#' onclick='openSlideMenu()')
+      svg(width='30' height='30')
+        path(d='M0,5 30,5' stroke='#fff' stroke-width='5')
+        path(d='M0,14 30,14' stroke='#fff' stroke-width='5')
+        path(d='M0,23 30,23' stroke='#fff' stroke-width='5')
+  ul.navbar-nav
+    li.nav-item
+      a.nav-link(href='index.html') Agence
+    li.nav-item
+      a.nav-link(href='vehicules.html') Vehicules
+    li.nav-item
+      a.nav-link(href='car-finance.html') Offer and Finance
+    li.nav-item
+      a.nav-link(href='contact.html') Contact
+  #container-header--my-account
+    .header--my-account
+      span
+        a.nav-link(href='register.html')
+          | Connect to my account
+          i.fas.fa-arrow-right
+#side-menu.side-nav
+  a.nav-link(href='#' onclick='closeSlideMenu()') &times;
+  a.nav-link(href='index.html') Home
+  a.nav-link(href='vehicules.html') Vehicules
+  a.nav-link(href='car-finance.html') Offer and Finance
+  a.nav-link(href='contact.html') Contact
+// panel Icons begin
+#main
+  #sliderImage
+    img.big-image(name='slide')
+    .header-boxContent
+      h1.titleSlider Need some fresh air?
+      p
+        | Do you want something new? Something who does look like you
+      a#buttonSlider.btn.btn-default(href='#') What&apos;s new?
+.litteWrapper
+  a#scrollDown.scrollDown(href='#scrollDown' title='SCROLL DOWWN TO CONTINUE')
+    i.fas.fa-angle-down
+br
+.contentGlobale-index
+  .headerTitle
+    h3 #{title}
+  // Create an array with all the cars
+  #indexGallery.container.row
+    //
+      <div class="col-md-6">
+      <div id="passat" class="thumbnail">
+      <img class="imgBestSeller" src="images/passat.png" alt="...">
+      <p class="textThumb" style="text-align:center">Passat</p>
+      </div>
+      </div>
+      <div class="col-md-6">
+      <div id="golf" class="thumbnail">
+      <img class="imgBestSeller" src="images/golf.png" alt="...">
+      <p class="textThumb" style="text-align:center">Nouvelle polo</p>
+      </div>
+      </div>
+      </div>
+      <div class="row" id="indexGallery">
+      <div class="col-md-6">
+      <div id="nTouareg" class="thumbnail">
+      <img class="imgBestSeller" src="images/nouvelleTouareg.png" alt="...">
+      <p class="textThumb" style="text-align:center">Nouvelle Touareg</p>
+      </div>
+      </div>
+      <div class="col-md-6">
+      <div id="nTiguan" class="thumbnail">
+      <img class="imgBestSeller" src="images/nouvelleTiguan.png" alt="...">
+      <p class="textThumb" style="text-align:center">nouvelle Tiguan</p>
+      </div>
+      </div>
+      </div>
+  // ARTICLE content
+  section#contentGlobale-article
+    .container-lg.row
+      section#adventure.col-md-6
+        h3.title-article Volkswagen and environment
+        h3.bodyText
+          | The amount of Vehicle Excise Duty (Road Fund Licence) payable on new cars varies depending on the level of CO2 (Carbon Dioxide)
+          | emissions produced by the vehicle and the type of fuel used.
+          | Discover the &lsquo;CO2 banding&rsquo; and therefore, the amount of Vehicle Excise Duty payable on our Eco2 range.
+        a.bodyText.bodyLink(href='volkswagen and environment.html') Find out more
+      section#history.col-md-6
+        h3.title-article History
+        h3.bodyText
+          | 1899: Volkswagen Freres is founded by Louis&rsquo; two brothers, Marcel and Fernand.
+          | 1900: The world&rsquo;s first saloon arrives in the market, the type B.
+          | 1902: Volkswagen produces its first engine and files a patent for the first turbo.
+          | 1903: The sales network expands and the first subsidiaries are set up outside France.
+        a.bodyText.bodyLink(href='history.html') Find out more
+  // CUSTOMER content
+  #contentGlobal-customers
+    a.container-lg(href='#customers')
+      span.common-button.common-button--default Our clients
+      ul.overlay
+        li
+          img.spotify(src='images/icons8-spotify.png' alt='spotify')
+        li
+          img.facebook(src='images/icons8-facebook.png' alt='lyft')
+        li
+          img.slack(src='images/icons8-slack.png' alt='slack')
+        li
+          img.mac(src='images/icons8-client-mac.png' alt='mac')
+  // beforeFooter
+  #contentGlobal-beforeFooter
+    .container-lg
+      #contentFooter.col-md-6
+        h1.titleBeforeFooter
+          span Are you ready for the adventure ? 
+          br
+          |             Contact us ou create your account.
+      #contentLink.col-md-6
+        a#signup(href='#') Create your account
+        a#contactUss(href='') Contact our company
+  // Footer
+  #contentGlobal-footer(style='background-color:lightgray;')
+    .clearfix
+      .col
+        ul.shop-box
+          li.title-footer Ownership
+          li(href='#') Extended warranty
+          li(href='#') Incontrol
+          li(href='#') Castrol oil
+      .col
+        ul.shop-box
+          li.title-footer Vehicules
+          li(href='#') Explore our Vehicules
+          li(href='#') Glossary
+      .col
+        ul.shop-box
+          li.title-footer About-us
+          li(href='#') Citroen c3 AIRCROSS
+          li(href='#') New
+      .col
+        ul.shop-box
+          li.title-footer Find us
+          li(href='#') Twitter
+          li(href='#') Facebook
+          li(href='#') Instagram
+          li(href='#') Google+
+      .col
+        ul.shop-box
+          li.title-footer(href='#') Map
+  // build:js/secondapp.js
+  //- script(src='js/index.js')
+  //- script(src='/bower_components/jquery/dist/jquery.js')
+  //- script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+  // enbuild

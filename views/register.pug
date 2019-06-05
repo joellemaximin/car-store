@@ -1,0 +1,37 @@
+doctype html
+head
+  // Latest compiled and minified CSS
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous')
+  // Font awesome
+  script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
+  // Aminate.css
+  //- link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css')
+  //- script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+  link(rel='stylesheet' type='text/css' href='/css/comments.css')
+
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  
+  #wrapper
+  .title-register
+    h2 Register
+  .container-wide
+    form(method='POST' id='#' action='/users/register' autocomplete='off')
+      .register-form
+        .form-group
+          input.form-control.col-md-4(type='text' name='name')
+        .form-group
+          input.form-control.col-md-4(type='text' name='email')
+        .form-group
+          input.form-control.col-md-4(type='text' name='username')
+        .form-group
+          input.form-control.col-md-4(type='text' name='password')
+        .form-group
+          input.form-control.col-md-4(name='password')
+        br
+        input.btn.btn-default(type='#' value='Register' name='register')
+        a(href='#') Forget your password?
+        a(type='button' href='login.html') Login here
+
+// enbuild
