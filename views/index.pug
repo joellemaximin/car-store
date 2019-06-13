@@ -1,12 +1,16 @@
 doctype html
 head
   //- Latest compiled and minified CSS
+  // Latest compiled and minified CSS
   link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous')
   // Font awesome
   script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
   // Aminate.css
-  //- script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
-  //- //- Aminate.css
+  //- link(rel='stylesheet' type='text/css' href='./styles.css')
+  style. 
+    a{
+      color : #000;
+    }
   //- link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css')
 
   //- meta(charset='UTF-8')
@@ -16,16 +20,10 @@ head
   title Volkswaginn
 body
 
-.container
 
-
-nav.navbar navbar-light bg-light
-  span.open-slide
-    a(href='#' onclick='openSlideMenu()')
-      svg(width='30' height='30')
-        path(d='M0,5 30,5' stroke='#fff' stroke-width='5')
-        path(d='M0,14 30,14' stroke='#fff' stroke-width='5')
-        path(d='M0,23 30,23' stroke='#fff' stroke-width='5')
+nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
   ul.navbar-nav
     li.nav-item
       a.nav-link(href='index.html') Agence
@@ -35,11 +33,18 @@ nav.navbar navbar-light bg-light
       a.nav-link(href='car-finance.html') Offer and Finance
     li.nav-item
       a.nav-link(href='contact.html') Contact
+    
   #container-header--my-account
     .header--my-account
       span
-        a.nav-link(href='register.html')
-          | Connect to my account
+      if user 
+        li 
+          a(href='/users/logout') Se déconnecter
+      else
+        a.nav-link(href='/users/register')
+          | Create your account
+        a.nav-link(href='/users/login')
+          | Login to your account
           i.fas.fa-arrow-right
 #side-menu.side-nav
   a.nav-link(href='#' onclick='closeSlideMenu()') &times;
@@ -48,7 +53,7 @@ nav.navbar navbar-light bg-light
   a.nav-link(href='car-finance.html') Offer and Finance
   a.nav-link(href='contact.html') Contact
 // panel Icons begin
-#main
+.container
   #sliderImage
     img.big-image(name='slide')
     .header-boxContent
@@ -66,33 +71,24 @@ br
   // Create an array with all the cars
   #indexGallery.container.row
     //
-      <div class="col-md-6">
-      <div id="passat" class="thumbnail">
-      <img class="imgBestSeller" src="images/passat.png" alt="...">
-      <p class="textThumb" style="text-align:center">Passat</p>
-      </div>
-      </div>
-      <div class="col-md-6">
-      <div id="golf" class="thumbnail">
-      <img class="imgBestSeller" src="images/golf.png" alt="...">
-      <p class="textThumb" style="text-align:center">Nouvelle polo</p>
-      </div>
-      </div>
-      </div>
-      <div class="row" id="indexGallery">
-      <div class="col-md-6">
-      <div id="nTouareg" class="thumbnail">
-      <img class="imgBestSeller" src="images/nouvelleTouareg.png" alt="...">
-      <p class="textThumb" style="text-align:center">Nouvelle Touareg</p>
-      </div>
-      </div>
-      <div class="col-md-6">
-      <div id="nTiguan" class="thumbnail">
-      <img class="imgBestSeller" src="images/nouvelleTiguan.png" alt="...">
-      <p class="textThumb" style="text-align:center">nouvelle Tiguan</p>
-      </div>
-      </div>
-      </div>
+.col-md-6
+  #passat.thumbnail
+    //- img.imgBestSeller(src='images/passat.png' alt='...')
+    p.textThumb(style='text-align:center') Passat
+.col-md-6
+  #golf.thumbnail
+    //- img.imgBestSeller(src='images/golf.png' alt='...')
+    p.textThumb(style='text-align:center') Nouvelle polo
+#indexGallery.row
+  .col-md-6
+    #nTouareg.thumbnail
+      //- img.imgBestSeller(src='images/nouvelleTouareg.png' alt='...')
+      p.textThumb(style='text-align:center') Nouvelle Touareg
+  .col-md-6
+    #nTiguan.thumbnail
+      //- img.imgBestSeller(src='images/nouvelleTiguan.png' alt='...')
+      p.textThumb(style='text-align:center') nouvelle Tiguan
+
   // ARTICLE content
   section#contentGlobale-article
     .container-lg.row

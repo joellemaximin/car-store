@@ -2,19 +2,23 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
-mongoose.connect("mongodb://localhost/carStore", { useNewUrlParser: true });
-//  mongoose.connect("mongodb://127.0.0.1:27017/car-store-master", { useMongoClient: true });
 var session = require('express-session');
 var flash = require('connect-flash');
+var passport = require('passport');
+const config = require ('./config/database');
+mongoose.connect(config.database);
+let db = mongoose.connection;
+
 // const expressValidator = require('express-validator');
 const validator = require('validator');
-
 const {
     body,
     validationResult
-} = require('express-validator/check')
+} = require('express-validator/check');
 
-let db = mongoose.connection;
+
+
+
 
 // check connection
 db.once('open', ()=> {
@@ -78,6 +82,8 @@ var Cars = mongoose.model('carmodelees');
 var Options = mongoose.model('caroptions');
 var Couleurs = mongoose.model('carcouleurs');
 var Types = mongoose.model('cartypes');
+var Contacts = mongoose.model('contacts');
+
 var Jantes = mongoose.model('carjantes');
 var Moteurs = mongoose.model('carmoteurs');
 var Comments = mongoose.model('comments')
@@ -108,14 +114,39 @@ app.use(express.urlencoded({
 
 //         return false
 //     }),
-//     body('param').optional(),
+//     body('param').optiona l(),
 //     (req, res) => {
 //         res.send(validationResult(req).array())
     
 // });
 
+//Passport config
+require('./config/passport')(passport);
+//passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('*', function(req, res, next){
+    res.locals.user= req.user || null;
+    next();
+});
 
 //// MES ROUTES
+
+let commentaires = require('./routes/comments');
+app.use('/comments', commentaires);
+
+let users = require('./routes/users');
+app.use('/users', users);
+
+let contacts = require('./routes/contacts');
+app.use('/contact-us', contacts);
+
+// let admins = require('./routes/admins');
+// app.use('/admin', admins);
+
+
+/////page home
 app.get('/', function(req, res){
     Cars.find({}, function(err, cars){
         if (err){
@@ -129,7 +160,25 @@ app.get('/', function(req, res){
     });
 });
 
-//cars routes
+
+
+/////comments routes
+
+app.get('/all-comments', function(req, res){
+    Comments.find({}, function(err, comments){
+        if(err){
+            console.log(err);
+        } else {
+            res.render('all_comments', {
+               title: 'Tous nos commentaires',
+               comments: comments
+            });
+        }
+    });
+});
+
+///// cars routes
+
 app.get('/all-cars', function(req, res){
     Cars.create({"name": "", "price": 23, "image": "", "caroption": "", "carcouleur": "", "cartype": "", "carjante": "", "carmoteur": ""}, function(err, doc) {
         // console.log(err, doc);
@@ -162,45 +211,6 @@ app.post('/admin/addCars', function(req, res){
     });
 });
 
-app.get('/contact/add', function(req, res){
-    
-    Contact.find({}, function(err, cars){
-        if (err){
-            console.log(err);
-        } else {
-            res.render('contact', {
-               title: 'Ajouter un commentaire'
-            });
-        }
-    });
-})
-
-//je récupère mes donnée apres validation du form avec method post
-app.post('/contact/add', function(req, res){
-    let contact = new Contact();
-    contact.firstname = req.body.firstname;
-    contact.lastname = req.body.lastname;
-    contact.phone = req.body.phone;
-    contact.email = req.body.email;
-    contact.queryType = req.body.queryType;
-    contact.vehicleRegistrationNo = req.body.vehicleRegistrationNo;
-    contact.message = req.body.message;
-
-    contact.save(function(err){
-        if(err){
-            console.log(err);
-            return;
-        } else {
-            res.redirect('/');
-        }
-    })
-    // console.log(req.body.firstname)
-    // console.log('Envoyer');
-    // return
-});
-
-/////////////////requete USER
-// app.get('/')
 
 //requete page admin
 app.get('/admin', function(req, res){
@@ -215,23 +225,13 @@ app.post('/admin', function(req, res){
     });
 });
 
+/////contact routes
 
-/////comments routes
 
-app.get('/all-comments', function(req, res){
-    Comments.find({}, function(err, comments){
-        if(err){
-            console.log(err);
-        } else {
-            res.render('all_comments', {
-               title: 'Tous nos commentaires',
-               comments: comments
-            });
-        }
-    });
-});
-let commentaires = require('./routes/comments');
-app.use('/comments', commentaires);
+/////////////////requete USER
+// app.get('/')
+
+
 
 ///newsletter routes
 // let newsletters = './routes/newsletters';
@@ -241,8 +241,6 @@ app.use('/comments', commentaires);
 // app.get('/', function(req, res){
 //     let login = new Login()
 // })
-
-
 
 app.listen(3000, function(error){
     if(!error) console.log("everything works");

@@ -3,7 +3,6 @@ let router = express.Router();
 
 //get the comment model
 let Comment = require('../models/comments');
-// var Comments = mongoose.model('comments')
 
 router.get('/', function(req, res){
     Comment.find({}, function(err, comments){

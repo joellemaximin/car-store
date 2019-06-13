@@ -3,10 +3,6 @@ var Schema = mongoose.Schema;
 
 
 let contactSchema = mongoose.Schema({
-    title: {
-        type: String,
-        require: true
-    },
     firstname: {
         type: String,
         require: true
@@ -29,7 +25,7 @@ let contactSchema = mongoose.Schema({
     },
     vehicleRegistrationNo: {
         type: String,
-        require: true
+        require: false
     },
     message: {
         type: String,

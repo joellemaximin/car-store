@@ -13,14 +13,19 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   meta(http-equiv='X-UA-Compatible' content='ie=edge')
   
-  .container-wide
+  .container
     img(src='' alt='')
-    form(method='GET' action='userpage')
+
+    form(method='POST',action='/users/login')
       .login-form
         .form-group
-          input.form-control(type='text' name='username' placeholder='Username')
+        label Username
+          input.form-control.col(type='text', name='username')
+          br
         .form-group
-          input.form-control(type='password' name='password' placeholder='Password')
-        input(type='#' name='submit' value='Login')
+        label Mot de passe
+          input.form-control.col(type='password', name='password')
+        br
+        input(type='submit', value='Login')
 // enbuild
 

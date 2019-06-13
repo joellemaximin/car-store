@@ -1,7 +1,7 @@
 let express = require('express');
 let router = express.router();
 
-app.get('/join-our-newsletter', function(req, res){
+router.get('/join-our-newsletter', function(req, res){
     Newsletter.find({}, function(err, newsletters){
         if(err){
             console.log(err);
@@ -14,7 +14,7 @@ app.get('/join-our-newsletter', function(req, res){
     })
 });
 
-app.post('/join-our-newsletter', function(req,res){
+router.post('/join-our-newsletter', function(req,res){
     let newsletter = new Newsletter();
     newsletter.email = req.body.email;
 
