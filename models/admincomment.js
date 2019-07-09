@@ -1,28 +1,24 @@
 let mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-let commentSchema = mongoose.Schema({
-    first_name: {
+let commentadminSchema = mongoose.Schema({
+    firstame: {
         type: String,
         require: true
     },
-    last_name: {
+    lastname: {
         type: String,
         require: true
-    },
+    }, 
     email: {
         type: String,
         require: true
     },
-    body: {
+    numero: {
         type: String,
         require: true
-    },
-    date : { 
-        type : Date, 
-        default : Date.now 
     }
 
 });
 
-let Comment = module.exports = mongoose.model('comments', commentSchema);
+let commentAdmin = module.exports = mongoose.model('commentadmins', commentadminSchema);

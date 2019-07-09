@@ -22,11 +22,11 @@ let OptionSchema = mongoose.Schema({
         type: Number,
         require: true,
     },
-    cars: {
-        type: String,
-        ref: 'carmodelees',
-        require: true
-    }
+    // cars: {
+    //     type: String,
+    //     ref: 'carmodelees',
+    //     require: true
+    // }
 
         
 
