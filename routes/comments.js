@@ -18,6 +18,7 @@ router.get('/', function(req, res){
 
 });
 
+
 router.get('/add', function(req, res){
     Comment.find({}, function(err, comments){
         if(err){
@@ -49,7 +50,7 @@ router.post('/add', function(req, res){
         comment.last_name = req.body.last_name;
         comment.email = req.body.email;
         comment.body = req.body.body;
-
+        comment.date = req.body.date;
         comment.save(function (err){
             if(err){
                 console.log(err);
@@ -82,7 +83,7 @@ router.get('/edit/:id', function(req, res){
         comment:comment
         });
     });
-});
+}); 
 
 
 router.post('/edit/:id', function(req, res){
@@ -91,6 +92,7 @@ router.post('/edit/:id', function(req, res){
     comment.last_name = req.body.last_name;
     comment.email = req.body.email;
     comment.body = req.body.body;
+    comment.date = req.body.date;
 
     let query = {_id:req.params.id}
 
@@ -109,9 +111,10 @@ router.post('/edit/:id', function(req, res){
 router.delete('/:id', function(req,res){
     let query = {_id:query.params.id}
 
-    Comment.remove(query, function(err){
+    Comment.destroy(query, function(err){
         if(err){
-            console.log(err)
+            console.log(err);
+            return;
         }
         // res.flash('  ', 'Comment Delete')
         res.send('Success');

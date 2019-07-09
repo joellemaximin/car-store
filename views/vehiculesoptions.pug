@@ -1,0 +1,55 @@
+doctype html
+head
+  // Font awesome
+  script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
+  // Aminate.css
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css')
+  script(src='https://code.jquery.com/jquery-3.3.1.js')
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  link(rel='stylesheet' type='text/css' href='css/style.css')
+  title Document
+
+.main
+  h2 Different model Car
+  .clearfix
+    
+
+    each option, i in options
+      h3(href='/option/'+option._id)= option.category
+      p(href='/option/'+option._id)= option.type
+      p(href='/option/'+option._id)= option.price
+
+
+      
+// Footer
+#contentGlobal-footer(style='background-color:lightgray;')
+  .clearfix
+    .col
+      ul.shop-box
+        li.title-footer Ownership
+        li(href='#') Extended warranty
+        li(href='#') Incontrol
+        li(href='#') Castrol oil
+    .col
+      ul.shop-box
+        li.title-footer Vehicules
+        li(href='#') Explore our Vehicules
+        li(href='#') Glossary
+    .col
+      ul.shop-box
+        li.title-footer About-us
+        li(href='#') Citroen c3 AIRCROSS
+        li(href='#') New
+    .col
+      ul.shop-box
+        li.title-footer Find us
+        li(href='#') Twitter
+        li(href='#') Facebook
+        li(href='#') Instagram
+        li(href='#') Google+
+    .col
+      ul.shop-box
+        li.title-footer(href='#') Map
+// enbuild

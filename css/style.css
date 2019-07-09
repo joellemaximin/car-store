@@ -1,4 +1,4 @@
-/*** BASIC ****/
+** BASIC ***
 body {
   background: #f2f2f2;
   overflow-x: hidden;
@@ -17,6 +17,10 @@ body {
   padding: 0 20px;
   width: 100%; }
 
+a{
+  color : #000;
+
+}
 .container h3, h4 {
   text-align: center;
   display: block;
@@ -44,7 +48,7 @@ ul {
 .navbar a {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: #110b0b;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -55,7 +59,7 @@ ul {
   list-style-type: none; }
 
 .navbar a:hover {
-  background-color: ghostwhite;
+  background-color: rgb(146, 206, 140);
   color: #000;
   border-radius: 2rem; }
 

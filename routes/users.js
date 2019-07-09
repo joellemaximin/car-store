@@ -2,9 +2,10 @@ let express = require('express');
 let router = express.Router();
 
 //get the comment model
-let User = require('../models/user');
-const bcrypt = require('bcryptjs');
-const passport = require('passport');
+let   User     = require('../models/user');
+const bcrypt   = require('bcryptjs');
+// const passport = require('passport');
+const jwt      = require('jsonwebtoken');
 
 // const saltRounds = 10;
 // const myPlaintextPassword = 's0/\/\P4$$w0rD';
@@ -12,7 +13,7 @@ const passport = require('passport');
    
 
 router.get('/register', function(req, res){
-    User.find({}, function(err, users){
+    User.find({email: req.body.email}, function(err, users){
         if(err){
             console.log(err);
         } else {
@@ -23,6 +24,8 @@ router.get('/register', function(req, res){
         }
     });
 });
+
+
 
 
 router.post('/register', function(req, res){
@@ -64,12 +67,26 @@ router.get('/login', function(req, res){
 });
 
 router.post('/login', function(req, res, next){
-    passport.authenticate('local', {
-        successRedirect: '/users/clients',
-        failureRedirect: '/users/login',
-        // failureFlash: true
-    })(req, res, next);
-    res.render('clients');
+        User.findOne({
+             where: {
+                 email: req.body.email
+                    }
+        }).then(function (user) {
+            if (!user) {
+               res.redirect('/clients');
+               console.log(!user)
+            } else {
+            bcrypt.compare(req.body.password, user.password, function (err, result) {
+                if (result == true) {
+                    res.redirect('/');
+                } else {
+                    res.send('Incorrect password');
+                    res.redirect('/');
+                }
+                console.log(user, "ça marche")
+            });
+        }
+    });
 });
 
 router.get('/logout', function(req, res){
