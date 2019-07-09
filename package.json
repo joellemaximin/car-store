@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/joellemaximin/car_store.git"
   },
+  "engines": {
+    "node": "10.15.3"
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
