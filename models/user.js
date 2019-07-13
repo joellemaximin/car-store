@@ -1,26 +1,28 @@
 let mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-// var bcrypt = require('bcrypt');
-// const saltRounds = 10;
+
 
 let userSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    name: {
-        type: String, 
-        required: true
-    },
     email: {
         type: String, 
         required: true
     },
-    username: {
+    hash: { 
         type: String, 
         required: true
     },
-    password: {
-        type: String, 
+    username: {
+        type: String,
+        unique: true, 
         required: true
+    },
+    createdDate: { 
+        type: Date, 
+        default: Date.now 
     }
+
 });
+
+// Schema.set('toJSON', { virtuals: true });
 
 let user = module.exports = mongoose.model('users', userSchema);

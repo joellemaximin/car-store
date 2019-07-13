@@ -1,50 +1,34 @@
 doctype html
 head
   // Latest compiled and minified CSS
-  link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
   script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
   // Aminate.css
-  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css')
+  link(rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
   script(src='https://code.jquery.com/jquery-3.3.1.js')
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  meta(http-equiv='X-UA-Compatible' content='ie=edge')
-  link(rel='stylesheet' type='text/css' href='css/style.css')
+  link(rel='stylesheet' type='text/css' href='./styles.css')
+
   title Document
-nav.navbar
-  span.open-slide
-    a(href='#' onclick='openSlideMenu()')
-      svg(width='30' height='30')
-        path(d='M0,5 30,5' stroke='#fff' stroke-width='5')
-        path(d='M0,14 30,14' stroke='#fff' stroke-width='5')
-        path(d='M0,23 30,23' stroke='#fff' stroke-width='5')
-  ul.navbar-nav
-    li
-      a(href='index.html') Agence
-    li
-      a(href='vehicules.html') Vehicules
-    li
-      a(href='car-finance.html') Offer and Finance
-    li
-      a(href='contact.html') Contact
-#side-menu.side-nav
-  a.btn-close(href='#' onclick='closeSlideMenu()') &times;
-  a(href='index.html') Home
-  a(href='vehicules.html') Vehicules
-  a(href='car-finance.html') Offer and Finance
-  a(href='contact.html') Contact
 // Header
-header#contactUs.grid
+header#contactUs
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    ul.nav.nav-pills.nav-fill
+      li.nav-item
+        a.nav-link.active(href='index.html') Home
+      li.nav-item
+        a.nav-link(href='vehicules.html') Vehicules
+      li.nav-item
+        a.nav-link(href='car-finance.html') Offre et Finances
+      li.nav-item
+        a.nav-link(href='contact.html') Contactez-nous
+
+  
   .businessimg
-  h1 Contact us
-  h3 How can I help you?
-  .list_questions
-    a(href='#ref1') I have a question about technology
-    a(href='#ref2') I&apos;d like to know about Vlokswagen
-    a(href='#ref3') I want a new Vlokswagen
-    a(href='#ref4') No one of these? Please write to us
+    h1 Contact us
+    h3 How can I help you?
+
 // Main container
-.container
+.container.contact-page
   h4 Something else to tell us?
   h3 Other ways we can to help
   .wrapper
@@ -54,12 +38,65 @@ header#contactUs.grid
       #contact-email.contentItem(data-type-holder='email')
         header.sub-header
           h3 Please complete the form below and we&apos;ll be in touch soon.
-          button#animateBtn.optionItem Send us a message via form
-          //return to the form
-        br
+          form(action='/contact-us/envoyer-nous-un-petit-mot' method='POST')
+          #contact-email-title
+            label.required(for='title') Title: *
+            #uniform-title.input-select.fixedWidth
+              span(style='user-select: none;')
+              select#title.form-control(name='title' aria-describebdy='title-tooltip')
+                option(value='Mr') Mr
+                option(value='Mrs') Mrs
+                option(value='Ms') Ms
+                option(value='Lord') Lord
+                option(value='Lady') Lady
+          #contact-email--first-name
+            label.required(for='first-name') First name: *
+            input#firstName.form-control(type='text' name='firstname' value='' aria-describebdy='title-name-tooltip')
+          #contact-email--last-name
+            label.required(for='last-name') Last name: *
+            input#lastName.form-control(type='text' name='lastname' value='' aria-describebdy='title-name-tooltip')
+          #contact-email--phone
+            label.required(for='phone') Phone number: *
+            input#phone.form-control(type='tel' name='phone' value='' aria-describebdy='phone-tooltip')
+          #contact-email--email-address
+            label.required(for='email-address') Email Adress: *
+            input#email-address.form-control(type='text' name='email' value='' aria-describebdy='email-address-tooltip')
+          #contact-email--querytype
+            label.required(for='queryType') Please select your query type: *
+            #uniform-queryType.input-select-wide.fixedWidth
+              span(style='user-select: none;') I want a new Volkswagen
+              select#queryType.form-control(name='querytype')
+                option(value='I have a question about technology') I have a question about technology
+                option(value="I'd like to know about Vlokswagen") I&apos;d like to know about Vlokswagen
+                option(value='I want a new Vlokswagen') I want a new Vlokswagen
+                option(value='No one of these? Please write to us') No one of these? Please write to usMs
+            br
+            #contact-email--text-area
+              label(for='vehicleRegistrationNo')
+                | If it&apos;s about a Volkswgen vehicle, please enter your registration number: 
+                .info-tooltip(role='tooltip' data-ng-open='true')
+                  span.glyphicon.glyphicon-info-sign(aria-hidden='true')
+                    | We&apos;ll use to find your vehicle on our systems
+                  .info-tooltip__tooltip-arrow-down(data-arrow-down='' style='transform: rotate(180deg); left: 95%;')
+              input#vehicleRegistrationNo.form-control(type='text' name='vehicleRegistrationNo' value='' aria-describebdy='reg-number--tooltip')
+            #contact-email--message
+              label(for='message') Your message: *
+              textarea#message.form-control(name='message' rows='5')
+            //
+              <div class="contact-email--recaptcha-no-label message">
+              <script src="#https://www.google.com/recaptcha/api.js" async defer></script>
+              <div class="#g-recaptcha" data-sitekey="#"></div>
+              </div>
+            br
+            a(href='#Privacy Statement') Privacy Statement
+
+            input#SendEmail.form-control(type='submit' name='SendEmail' value='Send Email')
+
+
+            
     // ----------------------- PHONE --------------
     div
-      button#phone.optionItem Over the phone
+      button#phoneLinks.optionItem On Call
       // by phone
       #animateBtn.contentItem(data-type-holder='phone')
         h3 Here you can find some numbers to call us
@@ -75,8 +112,8 @@ header#contactUs.grid
           .number(title='generalEnquire')
             | (+44) 0745 2902 293
           br
-    div
-      button#socialLinks.optionItem On Facebook/Twitter
+
+
       // contact-fb-tw
       #animateBtn.contentItem(data-type-holder='contact-fb-tw')
         h3 Here are our social links
@@ -86,9 +123,11 @@ header#contactUs.grid
         #twitter-link
           i.fab.fa-twitter
           h4 On Twitter
+
+
+      // contact letter
     div
       button#letter.optionItem By posting a letter
-      // contact letter
       #animateBtn.contentItem(data-type-holder='contact-letter')
         #customerCare(style='text-align: center;')
           h3 Customer Care
@@ -106,9 +145,11 @@ header#contactUs.grid
             |  Blackford
             br
             |  M35 338
+
+
+      // contact-Inperson
     div
       button#postcode.optionItem In per
-      // contact-Inperson
       #animateBtn.contentItem(style='text-align: center;' data-type-holder='contact-postcode')
         h3 contact your nearest retailer
         div
@@ -125,28 +166,7 @@ header#contactUs.grid
         li(href='#') Extended warranty
         li(href='#') Incontrol
         li(href='#') Castrol oil
-    .col
-      ul.shop-box
-        li.title-footer Vehicules
-        li(href='#') Our Vehicules
-        li(href='#') Glossary
-    .col
-      ul.shop-box
-        li.title-footer About-us
-        li(href='#') Citroen c3 AIRCROSS
-        li(href='#') New
-    .col
-      ul.shop-box
-        li.title-footer Find us
-        li(href='#') Twitter
-        li(href='#') Facebook
-        li(href='#') Instagram
-        li(href='#') Google+
-    .col
-      ul.shop-box
-        li.title-footer(href='#') Map
-// build:js/secondapp.js
-script(src='js/apptwo.js')
+    
 script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
 script(src='/bower_components/bootstrap/dist/js/bootstrap.js')

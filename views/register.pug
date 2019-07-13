@@ -17,12 +17,9 @@ head
   .title-register
     h2 Register
   .container
-    form(method='POST' action='/users/register' autocomplete='off')
+    form(method='POST', action='/users/register' autocomplete='off')
       .register-form
-        .form-group
-        label Name
-          input.form-control.col(type='text', name='name')
-        br
+
         .form-group
         label Email
           input.form-control.col(type='text', name='email')

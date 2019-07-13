@@ -109,15 +109,14 @@ router.post('/edit/:id', function(req, res){
 
 //deleting post
 router.delete('/:id', function(req,res){
-    let query = {_id:query.params.id}
+    // let query = {}
 
-    Comment.destroy(query, function(err){
+    Comment.remove({_id:req.params.comments_id}, function(err){
         if(err){
-            console.log(err);
-            return;
+            res.send(err);
         }
         // res.flash('  ', 'Comment Delete')
-        res.send('Success');
+        res.json({message:'Success'});
     });
 });
 

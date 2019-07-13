@@ -40,7 +40,7 @@ body {
     padding: 0; }
   
   /******* NAVBAR ***/
-  .navbar {
+  .contactnav {
     background-color: pink;
     overflow: hidden;
     height: 63px; }
@@ -424,7 +424,6 @@ body {
     border: none;
     color: #ffff;
     position: relative;
-    left: 43%;
   }
   
   .contentGlobale-index button{
@@ -557,7 +556,7 @@ body {
     width: 100%;
     min-height: 450px;
     text-align: center; }
-  
+
   #contactUs .businessimg {
     position: absolute;
     background-image: url("../images/image.jpg");
@@ -572,11 +571,14 @@ body {
   #contactUs h3, h1 {
     font-size: 25px;
     color: #000;
-    font-weight: 300; }
+    font-weight: 300; 
+    padding: 25px 0;
+    margin-top: 40px;
+  }
   
   .list_questions a {
     display: inline-block;
-    color: #373f51;
+    color: #000;
     text-align: center;
     padding: 25px 46px;
     font-size: 16px;
