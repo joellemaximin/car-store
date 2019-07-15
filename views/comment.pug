@@ -13,7 +13,7 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   meta(http-equiv='X-UA-Compatible' content='ie=edge')
 #wrapper
-  .title-newsletter
+  .title-newsletter      
     h2 #{title}
     br
     h2 
@@ -27,7 +27,7 @@ head
     p=  comment.body
 
 script
-  include comments.js
+  script(src='./js/comments.js')
 
 // enbuild
 

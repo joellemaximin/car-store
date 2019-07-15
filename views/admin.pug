@@ -65,8 +65,8 @@ head
           td(href='/cars/'+car._id)= car.car_moteur
           td(href='/cars/'+car._id)= car.car_images
           td
-            button(href='/admin/edit/'+car._id).btn.btn-primary Editer
-            button(href='/delete/:id').btn.btn-danger Supprimer
+            a.btn.btn-primary(href='/admin/edit/'+car._id type='button') Editer
+            a(href='/admin/delete/'+car._id type='button').btn.btn-danger Supprimer
 
 
 

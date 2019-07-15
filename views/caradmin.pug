@@ -16,14 +16,17 @@ head
     h2 #{title}
     br
     h2 
-    a.btn.btn-default(href='/cars/edit/'+car._id) Editer
+    a.btn.btn-default(href='/edit/'+car._id) Editer
     a.btn.btn-danger.delete-car(href='#',data-id=car._id) Supprimer
 
   .container
-    h1= car.first_name
-    h1= car.last_name
-    p=  car.email
-    p=  car.body
+    p(href='/cars/'+car._id)= car.car_name
+    p(href='/cars/'+car._id)= car.car_price
+    p(href='/cars/'+car._id)= car.car_type
+    p(href='/cars/'+car._id)= car.car_jante
+    p(href='/cars/'+car._id)= car.car_options
+    p(href='/cars/'+car._id)= car.car_moteur
+    
 
 
 // enbuild

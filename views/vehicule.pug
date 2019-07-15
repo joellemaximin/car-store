@@ -11,51 +11,21 @@ head
   link(rel='stylesheet' type='text/css' href='css/style.css')
   title Document
 
-  nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
-    ul.nav.nav-pills.nav-fill
-      li.nav-item
-        a.nav-link.active(href='') Home
-      li.nav-item
-        a.nav-link(href='/all-cars') Vehicules
-      li.nav-item
-        a.nav-link(href='') Offre et Finances
-      li.nav-item
-        a.nav-link(href='/contact-us') Contactez-nous
-
-  
   .main
-    div.filterCars
-
-
-
-
-
-
-
-  h2 Different model Car
+  h2 Une voiture
   .clearfix
-    each car, i in cars
-      //- td(href='/cars/'+car._id)= car.car_name
-      //- td(href='/cars/'+car._id)= car.car_price
-      //- td(href='/cars/'+car._id)= car.car_type
-      //- td(href='/cars/'+car._id)= car.car_jante
-      //- td(href='/cars/'+car._id)= car.car_options
-      //- td(href='/cars/'+car._id)= car.car_moteur
-      //- td(href='/cars/'+car._id)= car.car_images
-      .container.row
-        div.col-md-6.col-lg-4
-        .card.border-0.transform-on-hover
-          //- img.card-img-top.img-fluid.col(src='/cars/'+car._id)= car.car_images     
-          .card-body
-            h5.card-title(href='/cars/'+car._id)= car.car_name
-            p.card-text(href='/cars/'+car._id)= car.car_price
-            a.btn.btn-primary(href='/all-cars/car/'+car._id) Visiter
+      h2= car.car_name
+      p= car.car_price
+      p= car.car_type
+      p= car.car_jante
+      p= car.car_options
+      p= car.car_moteur
+      p= car.car_images
 
 
 // Footer
 #contentGlobal-footer(style='background-color:lightgray;')
-  .clearfix.row
+  .clearfix
     .col
       ul.shop-box
         li.title-footer Ownership

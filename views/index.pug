@@ -5,6 +5,8 @@ head
   link(rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
   // Font awesome
   script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
+  script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+
   // Aminate.css
   link(rel='stylesheet' type='text/css' href='./styles.css')
   style. 
@@ -19,7 +21,6 @@ head
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   meta(http-equiv='X-UA-Compatible' content='ie=edge')
-  link(rel='stylesheet' type='text/css' href='css/style.css')
   title Volkswaginn
 body
 
@@ -27,13 +28,13 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
   button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
   ul.nav.nav-pills.nav-fill
     li.nav-item
-      a.nav-link.active(href='index.html') Home
+      a.nav-link.active(href='') Home
     li.nav-item
-      a.nav-link(href='vehicules.html') Vehicules
+      a.nav-link(href='/all-cars') Vehicules
     li.nav-item
-      a.nav-link(href='car-finance.html') Offre et Finances
+      a.nav-link(href='') Offre et Finances
     li.nav-item
-      a.nav-link(href='contact.html') Contactez-nous
+      a.nav-link(href='/contact-us') Contactez-nous
 
   
     //- #side-menu.side-nav.cacher
@@ -64,29 +65,37 @@ br
     h3 #{title}
   // Create an array with all the cars
   #indexGallery
-  .container.row
   each car, i in cars
-    p.col-lg-4(href='/cars/'+car._id)= car.car_name
-    .thumbnail
-    //- img.imgBestSeller(src='images/passat.png' alt='...')
-    //- img.imgBestSeller(src='/cars/'+car._id)= car.car_images
-    
-    br
-    p(href='/cars/'+car._id)= car.car_price
-    br
+    .container.row
+      div.col-md-6.col-lg-4
+      .card.border-0.transform-on-hover
+        //- img.card-img-top.img-fluid.col(src='/cars/'+car._id)= car.car_images     
+        .card-body
+          h5.card-title(href='/cars/'+car._id)= car.car_name
+          p.card-text(href='/cars/'+car._id)= car.car_price
+          a.btn.btn-primary(href='') Visiter
+
+
   // POPUP prendre rendez vous
 
-  container.modal-hideen.row
-  h3.title-modal Bienvenue sur LOCAVWATI
-  
-  .container-wide
-    form(method='POST' id='#' action="")
-      .contactus-form
-        .form-group
-          label Email:
-          input.form-control.col-md-4(type='text' name='first_name', value=comment.first_name )
-  
-        input.btn.btn-default(type='submit',value='Submit' )
+  div.backmodal
+    .container-wide.formpopup
+      span.closeBtn &times;
+      h2.title-modal Vous voulez un rendez-vous avec l'un de nos conseiller ?
+
+      form(method='POST' id='#' action="/contact-us/envoyer-nous-un-petit-mot")
+        .contactus-form
+          .form-group
+            label Email:
+            input.form-control.col-md-8(type='text' )
+          .form-group
+            label Nom/Prénom:
+            input.form-control.col-md-8(type='text' )
+          .form-group
+            label Date de rendez-vous:
+            input.form-control.col-md-4(type='date' )
+    
+          input.btn.btn-sendmodal(type='submit',value='Envoyez' )
   
 
   // ARTICLE content
@@ -109,8 +118,8 @@ br
         a.bodyText.bodyLink(href='history.html') Find out more
   // CUSTOMER content
   #contentGlobal-customers
-    a.container-lg(href='#customers')
-      span.common-button.common-button--default Our clients
+    a.container-lg
+      button#commonbutton.common-button--default Our clients
       ul.overlay
         li
           img.spotify(src='images/icons8-spotify.png' alt='spotify')
@@ -120,6 +129,33 @@ br
           img.slack(src='images/icons8-slack.png' alt='slack')
         li
           img.mac(src='images/icons8-client-mac.png' alt='mac')
+
+  //modal clientsList
+
+  div#iconmodal
+    .container-wide.iimodal
+      span.closeBtn &times;
+      h2.title-modal Liste de clients fidèles
+        ul.row
+          li.col-lg-6
+            .imageList 
+              img.imge(src='images/icons8-spotify.png' alt='spotify')
+              h3 Spotify
+          
+          li.col-lg-6
+            .imageList 
+              img.imge(src='images/icons8-facebook.png' alt='facebook')
+              h3 Facebook
+          
+          li.col-lg-6
+            .imageList 
+              img.imge(src='images/icons8-slack.png' alt='slack')
+              h3 Slack
+         
+          li.col-lg-6
+            .imageList 
+              img.imge(src='images/icons8-client-mac.png' alt='mac')
+              h3 Apple
   // beforeFooter
   #contentGlobal-beforeFooter
     .container-lg.row
@@ -129,8 +165,8 @@ br
           br
           span Contact us ou create your account.
       #contentLink.col
-        a#signup(href='') Create your account
-        a#contactUss(href='') Contact our company
+        a#signup(href='/users/register') S'enregister
+        a#contactUss(href='/contact-us') Contacter our company
   // Footer
   #contentGlobal-footer(style='background-color:lightgray;')
     .clearfix
@@ -150,8 +186,10 @@ br
           li(href='#') Google+
       .col
         ul.shop-box
-          li.title-footer(href='#') Map
+          li.title-footer(href='#') Map  
+  script(src='./js/modal.js')
+
   //- script(src='js/index.js')
   //- script(src='/bower_components/jquery/dist/jquery.js')
-  include modal.js
+
   // enbuild

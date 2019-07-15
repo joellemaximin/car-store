@@ -7,7 +7,7 @@ $(document).ready(function(){
             url: '/comment/'+id,
             success: function(response){
                 alert('Deleting comments');
-                window.location.href='/';
+                window.location.href='/all_comments';
             },
             error: function(err){
                 console.log(err)

@@ -103,6 +103,88 @@ body {
     font-size: 16px; }
   
   /******* MAIN******/
+  .indexGallery{
+    padding-bottom: 60px;
+    top: 60px;
+  }
+
+  /* .indexGallery .heading{
+    margin-bottom: 50px;
+    text-align: center;  
+  } */
+
+  .btn-sendmodal{
+    background-color: #e9af11;
+    padding: 1em 2em;
+  }
+
+  .btn-sendmodal:hover{
+    background-color: #f8da87;
+  }
+
+  .backmodal{
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    overflow: auto;
+    background-color: rgb(54, 53, 53);
+  }
+
+  .formpopup{
+    background-color: #f4f4f4;
+    margin: 50px auto;
+    padding: 25px 55px;
+    width: 55%;
+    box-shadow: 0 5px 8px 0 rgb(0, 0, 0, 0.2), 0 7px 20px 0 rgb(0, 0, 0, 0.17);
+    border-radius: 10px;
+  }
+
+  .closeBtn{
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+  }
+
+  .closeBtn:hover,.closeBtn:focus{
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  #iconmodal{
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    overflow: auto;
+    background-color: rgb(236, 221, 178);
+  }
+
+  .iimodal{
+    background-color: #f4f4f4;
+    margin: 50px auto;
+    padding: 25px 55px;
+    width: 55%;
+    box-shadow: 0 5px 8px 0 rgb(0, 0, 0, 0.2), 0 7px 20px 0 rgb(0, 0, 0, 0.17);
+    border-radius: 10px;
+  }
+
+  h2.title-modal{
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .imageList{
+    padding: 1em 2em;
+    margin-top: 30px;
+  }
   #main {
     transition: margin-left 0.5s;
     overflow: hidden;
@@ -203,13 +285,13 @@ body {
     margin-top: 50px;
     margin-bottom: 50px; }
   
-  .common-button {
+  #commonbutton {
     opacity: 0; }
   
   #contentGlobal-customers:hover .overlay {
     opacity: .1; }
   
-  #contentGlobal-customers:hover .common-button {
+  #contentGlobal-customers:hover #commonbutton {
     opacity: 1; }
   
   #contentGlobal-customers a {
@@ -218,19 +300,23 @@ body {
     padding-bottom: 19px; }
   
   #adventure, #history, .bodyText {
-    margin: 30px 0; }
+    margin: 30px 0; 
+    color: #2e2f3e;
+    font-size: 17px;
   
-  #contentGlobal-customers .common-button {
+  }
+  
+  #contentGlobal-customers #commonbutton {
     position: absolute;
     z-index: 1;
     left: 50%;
     transform: translate(-50%, -5px) scale(0.95); }
   
-  .common-button--default {
+  #commonbutton--default {
     color: #fff;
     background: #6772e5; }
   
-  .common-button {
+  #commonbutton {
     white-space: nowrap;
     display: inline-block;
     height: 40px;

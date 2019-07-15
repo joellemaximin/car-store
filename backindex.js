@@ -2,8 +2,7 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
-
-
+const cors = require('cors')
 const config = require ('./config/database');
 mongoose.connect(config.database);
 let db = mongoose.connection;
@@ -136,7 +135,7 @@ app.get('*', function(req, res, next){
 let commentaires = require('./routes/comments');
 app.use('/comments', commentaires);
 
-let users = require('./routes/users');
+let users = require('./controller/users.controller');
 app.use('/users', users);
 
 let contacts = require('./routes/contacts');
@@ -149,7 +148,7 @@ let options = require('./routes/caroptions');
 app.use('/car-options', options);
 
 let caradmins = require('./routes/caradmins');
-app.use('/admin', caradmins); 
+app.use('/admin', caradmins);
 
 let commadmins = require('./routes/commentadmin');
 app.use('/admin-comments', commadmins); 
@@ -186,10 +185,21 @@ app.get('/all-cars', function(req, res){
             });
         }
     });
-
-    
 });
 
+
+
+app.get('/all-cars/car/:id', function(req, res){
+    Admin.findById(req.params.id, function(err, car){
+        // console.log(car);
+        // return; to look in the console
+        res.render('vehicule', {
+            title: 'Affichage une voiture', 
+            car: car
+        });
+    });
+
+});
 
 
 /////comments routes
