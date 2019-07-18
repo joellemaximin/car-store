@@ -108,15 +108,16 @@ router.post('/edit/:id', function(req, res){
 });
 
 //deleting post
-router.delete('/:id', function(req,res){
-    // let query = {}
+router.delete('/delete', function(req,res){
+    // let query = {req.params.comments_id}
+    var commentId = req.body.commentId
 
-    Comment.remove({_id:req.params.comments_id}, function(err){
+    Comment.remove({_id: commentId}, function(err){
         if(err){
             res.send(err);
         }
         // res.flash('  ', 'Comment Delete')
-        res.json({message:'Success'});
+        res.json({success: true});
     });
 });
 

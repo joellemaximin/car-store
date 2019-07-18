@@ -44,6 +44,7 @@ head
     thead
       tr
         th(scope='col') ID
+        th(scope='col') Status
         th(scope='col') Car Name
         th(scope='col') Prix
         th(scope='col') Type
@@ -57,6 +58,7 @@ head
       each car, i in cars
         tr
           th(scope='row' href='/cars/'+car._id)= car.car_id
+          td(href='/cars/'+car._id)= car.status
           td(href='/cars/'+car._id)= car.car_name
           td(href='/cars/'+car._id)= car.car_price
           td(href='/cars/'+car._id)= car.car_type
@@ -67,8 +69,5 @@ head
           td
             a.btn.btn-primary(href='/admin/edit/'+car._id type='button') Editer
             a(href='/admin/delete/'+car._id type='button').btn.btn-danger Supprimer
-
-
-
 // enbuild
 

@@ -72,6 +72,7 @@ let User = require('./models/user');
 // let Newsletter = require('./models/newsletter');
 let Comment = require('./models/comments');
 let Admin = require('./models/admin');
+// var Reservation = require('./models/reserve');
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -86,6 +87,7 @@ var Jantes = mongoose.model('carjantes');
 var Moteurs = mongoose.model('carmoteurs');
 var Comments = mongoose.model('comments');
 var Admins = mongoose.model('caradmins');
+// var reserve = mongoose.model('reservation');
 
 // var generations = mongoose.model('cargenerations');
 
@@ -119,11 +121,11 @@ app.use(express.urlencoded({
     
 // });
 
-//Passport config
-require('./config/passport')(passport);
-//passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
+// //Passport config
+// require('./config/passport')(passport);
+// //passport middleware
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.get('*', function(req, res, next){
     res.locals.user= req.user || null;
@@ -150,35 +152,49 @@ app.use('/car-options', options);
 let caradmins = require('./routes/caradmins');
 app.use('/admin', caradmins);
 
+
 let commadmins = require('./routes/commentadmin');
 app.use('/admin-comments', commadmins); 
- 
 
+// let reservation = require('./routes/reserve');
+// app.use('/reserve-ta-voiture', reservation); 
+ 
 // let usersdmins = require('./routes/newslettersadmins');
 // app.use('/admin-newsletters', newsladmins); 
 
 //page home
 app.get('/', function(req, res){
     Admin.find({}, function(err, cars){
-        if (err){
+        if (err)
             console.log(err);
-        } else {
-            res.render('index', {
-                title: "page d'accueil",
-                cars: cars
-            }); 
-        }
+    
+            Comments.find({}, function(err, comments){
+                if(err){
+                    console.log(err);
+                } else {
+                    res.render('index', {
+                        title: "page d'accueil",
+                        cars: cars,
+                        comments: comments
+                    });
+                }
+            });
     });
+
 });
 
 
 app.get('/all-cars', function(req, res){
     Admin.find({}, function(err, cars){
+        var products = [];
+        var displaySize = 3;
+        for (var i = 0; i < cars.length; i += displaySize) {
+            products.push(cars.slice(i, i + displaySize));
+        }
         if(err){
             console.log(err);
         } else {
             // console.log(cars);
-            
             res.render('vehicules', {
                title: 'Toutes nos voitures',
                cars: cars
@@ -217,72 +233,20 @@ app.get('/all-comments', function(req, res){
     });
 });
 
-///// cars routes
+app.get('/commentaires', function(req, res){
 
-// app.get('/all-cars', function(req, res){
-//     // Cars.create({"name": "", "price": 23, "image": "", "caroption": "", "carcouleur": "", "cartype": "", "carjante": "", "carmoteur": ""}, function(err, doc) {
-//     //     // console.log(err, doc);
-//     console.log('dfdfsdf');
-    
-   
-//     Cars.find({}, function(err, cars){
-//         if (err){
-//             console.log(err);
-//         } else {
-//             console.log(cars);
-            
-//             // res.send(cars); 
-//             res.render('vehicules');
-//             cars: cars
-
-//         }
-//       }); 
-// });
-// // });
+    Comments.find({}, function(err, comments){
+        if(err){
+            console.log(err);
+        } else {
+            res.render('index', {
+               comments: comments
+            });
+        }
+    });
+});
 
 
-// app.post('/admin/addCars', function(req, res){
-//     let car = new Cars();
-//     car.first_name = req.body.first_name;
-//     car.last_name = req.body.last_name;
-//     car.email = req.body.email;
-
-//     Cars.save(function (err){
-//         if(err){
-//             console.log(err);
-//             return;
-//         } else {
-//             res.redirect('/all-cars');
-//         }
-//     });
-// });
-
-
-// //requete page admin
-// app.get('/admin', function(req, res){
-//     res.render('admin', {
-//         title: "Page admin"
-//     });
-// });
-
-// app.post('/admin', function(req, res){
-//     res.render('admin', {
-//         title: "Page admin"
-//     });
-// });
-
-
-
-
-
-///newsletter routes
-// let newsletters = './routes/newsletters';
-// app.use('/newsletters', newsletters);
-
-/////////////////////////////////LOGIN
-// app.get('/', function(req, res){
-//     let login = new Login()
-// })
 
 app.listen(3000, function(error){
     if(!error) console.log("everything works");

@@ -1,0 +1,168 @@
+doctype html
+html(lang='en')
+  head
+    // Latest compiled and minified CSS
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+    // Font awesome
+    script(defer='', src='https://use.fontawesome.com/releases/v5.0.9/js/all.js', integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl', crossorigin='anonymous')
+    // Aminate.css
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css')
+    script(src='https://code.jquery.com/jquery-3.3.1.js')
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    link(rel='stylesheet', type='text/css', href='css/style.css')
+    title Document
+  body
+    nav.navbar
+      span.open-slide
+        a(href='#', onclick='openSlideMenu()')
+          svg(width='30', height='30')
+            path(d='M0,5 30,5', stroke='#fff', stroke-width='5')
+            path(d='M0,14 30,14', stroke='#fff', stroke-width='5')
+            path(d='M0,23 30,23', stroke='#fff', stroke-width='5')
+      ul.navbar-nav
+        li
+          a(href='index.html') Agence
+        li
+          a(href='vehicules.html') Vehicules
+        li
+          a(href='offers.html') Offer
+        li
+          a(href='contact.html') Contact
+      #container-header--my-account
+        .header--my-account
+          span
+            a(href='#')
+              | Connect to my account
+              i.fas.fa-arrow-right
+    #side-menu.side-nav
+      a.btn-close(href='#', onclick='closeSlideMenu()') ×
+      a(href='index.html') Home
+      a(href='vehicules.html') Vehicules
+      a(href='offers.html') Offer
+      a(href='contact.html') Contact
+    #contentGlobale-offer.column-offers
+      ul.offer-box.offer
+        li.headerTitleFooter Offers
+        li.headerParaph See the latest Volkswagen offers
+        li
+          a.link-offers(href='') View our last offers
+        li
+          a.link-offers(href='') Finance calculator
+        li
+          a.link-offers(href='') Electric car subsidies
+    #contentGlobale-offer.column-offers
+      ul.offer-box.finance
+        li.headerTitleFooter Finance options explained
+        li.headerParaph Find out how each of our finance options work
+        li
+          a.link-offers(href='') Overview of finance options
+        li
+          a.link-offers(href='') Finance made simple videos
+        li
+          a.link-offers(href='') Solutions
+        li
+          a.link-offers(href='') Hire purchase
+        li
+          a.link-offers(href='') Contract hire
+        li
+          a.link-offers(href='') E-solutions
+    #contentGlobale-offer.column-offers
+      ul.offer-box.motability
+        li.headerTitleFooter Motability
+        li.headerParaph Helping people cho receive specific allowances to buy or lease cars
+        li
+          a.link-offers(href='') About motability
+        li
+          a.link-offers(href='') Motability offers
+        li
+          a.link-offers(href='') Who is concerned?
+        li
+          a.link-offers(href='') Solutions
+        li
+          a.link-offers(href='') Volkswagen for you
+        li
+          a.link-offers(href='') Something else
+    #contentGlobale-offer.column-offers
+      ul.offer-box.protection
+        li.headerTitleFooter Protection
+        li.headerParaph Volkswagen Insurance offers a range of Insurance products.
+        li
+          a.link-offers(href='') Volkswagen insurance
+        li
+          a.link-offers(href='') Volkswagen ensurance
+        li
+          a.link-offers(href='') Fixed cost maintenance plans
+    #contentGlobale-offer.column-offers
+      ul.offer-box.Leasing
+        li.headerTitleFooter Local business leasing
+        li.headerParaph Contract hire coul be right for you
+        li
+          a.link-offers(href='') Local business offers
+        li
+          a.link-offers(href='') Why lease from us
+        li
+          a.link-offers(href='') How it works
+        li
+          a.link-offers(href='') Volkswagen Driverline
+        li
+          a.link-offers(href='') Local business FAQs
+    #contentGlobale-offer.column-offers
+      ul.offer-box.lastone
+        li.headerTitleFooter Company
+        li.headerParaph Volkswagen Insurance offers a range of Insurance products.
+        li
+          a.link-offers(href='') Find the right Volkswagen for you
+        li
+          a.link-offers(href='') Tax calculator
+        li
+          a.link-offers(href='') Taxation chart brochure
+        li
+          a.link-offers(href='') Find the right Volkswagen for you
+        li
+          a.link-offers(href='') Tax calculator
+        li
+          a.link-offers(href='') Taxation chart brochure
+    #contentGlobale-modelOffer
+      .row
+        .col-sm-6.col-md-4
+          .thumbnail
+            img#img-model(src='images/e-Up.png', alt='...')
+            .caption
+              h3 e-Up!
+              p ...
+              p
+                a.btn.btn-primary(href='#', role='button') Button
+                a.btn.btn-default(href='#', role='button') Button
+        .col-sm-6.col-md-4
+          .thumbnail
+            img#img-model(src='images/golf.png', alt='...')
+            .caption
+              h3 New golf
+              p ...
+              p
+                a.btn.btn-primary(href='#', role='button') Button
+                a.btn.btn-default(href='#', role='button') Button
+        .col-sm-6.col-md-4
+          .thumbnail
+            img#img-model(src='images/tiguan.png')
+            .caption
+              h3 Tiguan
+              p ...
+              p
+                a.btn.btn-primary(href='#', role='button') Button
+                a.btn.btn-default(href='#', role='button') Button
+        .col-sm-6.col-md-4
+          .thumbnail
+            img#img-model(src='images/nouvelleTiguan.png', alt='...')
+            .caption
+              h3 Nouvelle Tiguan
+              p ...
+              p
+                a.btn.btn-primary(href='#', role='button') Button
+                a.btn.btn-default(href='#', role='button') Button
+    // build:js/secondapp.js
+    script(src='js/apptwo.js')
+    // enbuild
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')

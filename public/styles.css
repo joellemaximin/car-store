@@ -338,6 +338,51 @@ body {
     align-items: center;
     justify-content: center; }
   
+
+  /**** comments ****/
+
+  .comment-title{
+    clear: both;
+    padding-top: 6rem;
+    text-align: center;
+  }
+  ol, li{
+    list-style: none;
+
+  }
+  .comment{
+    padding-top: 1rem;
+    margin: 3rem;
+  }
+  .comment-body, .comment-list, .comment-author{
+    padding: 0
+  }
+  .comment-wrap{
+    border: 1.4px solid #ffeb3b;
+  }
+
+  .comment-wrap, .comment-list{
+    position: relative;
+    background: #17141d;
+    color: #c2c2c2;
+    -webkit-box-shadow: 0 4px 80px #070509;
+    box-shadow: 0 4px 50px #070509;
+    padding: 2rem;
+    border-radius: 16px;
+  }
+  .comment-list > li.comment{
+    list-style: none;
+    position: fixed;
+    margin: 3rem 2rem;
+  }
+
+  .comment-author{
+    font-family: Rubik,Lato,lucida grande,lucida sans unicode,Tahoma,Sans-Serif;
+    color: #fff;
+    font-weight: 700;
+    font-size: 24px;
+    margin-left: 0;
+  }
   /**** beforeFooter ****/
   #contentGlobal-beforeFooter {
     display: block;
@@ -759,23 +804,35 @@ body {
   /******* register Form ******/
   #wrapper {
     padding: 30px 100px; }
-    #wrapper .title-register {
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 3px; }
-  
+  .title-register {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px; }
+
   .register-form, .login-form {
     padding: 70px 20%;
     margin: 0;
     position: relative; }
-    .register-form input[type="submit"], .login-form input[type="submit"] {
-      outline: none;
-      height: 40px;
-      background: #f2f2f2;
-      font-size: 18px;
-      border-radius: 5px;
-      width: 100%; }
-  
+
+  .register-form input[type="submit"], .login-form input[type="submit"] {
+    outline: none;
+    height: 40px;
+    padding: 10px auto;
+    margin-bottom: 20px;
+    background: #df9b9b;
+    font-size: 18px;
+    border-radius: 5px;
+    float: right;
+   }
+
+  .buttonlogin{
+    background-color: #7cb6b6;
+    padding: 4px 10px;
+  }
+  .linkforgotpassword{
+    text-decoration: none;
+    margin-right: 10px;
+  }
   .form-group {
     margin: 0;
     padding: 0; }

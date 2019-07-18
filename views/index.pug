@@ -32,7 +32,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
     li.nav-item
       a.nav-link(href='/all-cars') Vehicules
     li.nav-item
-      a.nav-link(href='') Offre et Finances
+      a.nav-link(href='/reserver') Réservation
     li.nav-item
       a.nav-link(href='/contact-us') Contactez-nous
 
@@ -156,6 +156,23 @@ br
             .imageList 
               img.imge(src='images/icons8-client-mac.png' alt='mac')
               h3 Apple
+  
+  // display comments per user
+  h2.comment-title Commentaires
+      ol.comments-list#comments
+      each comment, i in comments
+        li.comment
+          div.comment-wrap
+            div.comment-body
+              div.comment-author-wrap
+                h3.comment-author(href='/comments/'+comment._id)= comment.last_name
+                p.comment-time(href='/comments/'+comment._id)= comment.date
+              div.comment-content-wrap
+                p.comment-text(href='/comments/'+comment._id)= comment.body
+  
+
+
+
   // beforeFooter
   #contentGlobal-beforeFooter
     .container-lg.row
@@ -170,23 +187,8 @@ br
   // Footer
   #contentGlobal-footer(style='background-color:lightgray;')
     .clearfix
-      .col
-        ul.shop-box
-          li.title-footer Ownership
-          li(href='#') Extended warranty
-          li(href='#') Incontrol
-          li(href='#') Castrol oil
-
-      .col
-        ul.shop-box
-          li.title-footer Find us
-          li(href='#') Twitter
-          li(href='#') Facebook
-          li(href='#') Instagram
-          li(href='#') Google+
-      .col
-        ul.shop-box
-          li.title-footer(href='#') Map  
+     
+      p.title-footer(href='#') Map  
   script(src='./js/modal.js')
 
   //- script(src='js/index.js')

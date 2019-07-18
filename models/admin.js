@@ -33,6 +33,10 @@ let caradminSchema = mongoose.Schema({
     car_jantes: {
         type: String, 
         require: true
+    },
+    status: {
+        type: Boolean,
+        require: false
     }
 
 });

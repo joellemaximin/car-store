@@ -5,6 +5,7 @@ head
   // Aminate.css
   link(rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
   link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css')
+  script(src='https://code.jquery.com/jquery-3.3.1.min.js')
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   meta(http-equiv='X-UA-Compatible' content='ie=edge')
@@ -24,32 +25,69 @@ head
         a.nav-link(href='/contact-us') Contactez-nous
 
   
-  .main
-    div.filterCars
+  .col-lg-9.col-md-9.col-sm-9.col-xs-12.content
+    .content-area
+      .top-filter.tfilter-box.margin-b-20
+        .container
+          .row
+            // /.col 4
+            .col-sm-4
+              select.form-control
+                option(value='0', selected='selected')
+                  |Selectionner votre modèle
+                option(value='1')
+                  | Tous
+                option(value='2')
+                  | Volkswagen Passat
+                option(value='3')
+                  | Volkswagen Tiguan
+                option(value='4')
+                  | Volkswagen Touran
+                option(value='5')
+                  | Volkswagen Arteon
+                option(value='6')
+                  | Volkswagen Golf
+            // /.col 3
+            .col-sm-4
+              select.form-control
+                option(value='0', selected='selected')
+                  | Selection ton moteur
+                option(value='1')
+                  | Tous
+                option(value='2')
+                  | Essence
 
-
-
-
-
-
-
+            // /.col 3
+            .col-sm-4
+              select.form-control
+                option(value='0', selected='selected')
+                  | Selectionne tes options
+                option(value='1')
+                  | All
+                option(value='2')
+                  | Packs
+                option(value='3')
+                  | Sécurité
+                option(value='4')
+                  | Conduite automatique
+                option(value='5')
+                  | Extérieur
+                option(value='6')
+                  | Intérieur
+            .col-sm-2
+              button.btn.btn-primary.site-btn2(type='button') Submit
+    
   h2 Different model Car
   .clearfix
+  section.liste-des-offres
     each car, i in cars
-      //- td(href='/cars/'+car._id)= car.car_name
-      //- td(href='/cars/'+car._id)= car.car_price
-      //- td(href='/cars/'+car._id)= car.car_type
-      //- td(href='/cars/'+car._id)= car.car_jante
-      //- td(href='/cars/'+car._id)= car.car_options
-      //- td(href='/cars/'+car._id)= car.car_moteur
-      //- td(href='/cars/'+car._id)= car.car_images
       .container.row
-        div.col-md-6.col-lg-4
-        .card.border-0.transform-on-hover
-          //- img.card-img-top.img-fluid.col(src='/cars/'+car._id)= car.car_images     
-          .card-body
-            h5.card-title(href='/cars/'+car._id)= car.car_name
-            p.card-text(href='/cars/'+car._id)= car.car_price
+        div.imgvolkswagen.col-md-6
+          //- img.img-top.img-fluid.col(src='/cars/'+car._id)= car.car_images     
+          img.img-top.img-fluid(src='./images/e-Golf.png', alt='...')
+        div.descriptifvolkswagen.col-md-6
+            h5.title(href='/cars/'+car._id)= car.car_name
+            p.text(href='/cars/'+car._id)= car.car_price
             a.btn.btn-primary(href='/all-cars/car/'+car._id) Visiter
 
 
@@ -82,4 +120,6 @@ head
     .col
       ul.shop-box
         li.title-footer(href='#') Map
+  script(src='./js/filtercar.js')
+
 // enbuild

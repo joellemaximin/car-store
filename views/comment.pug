@@ -18,7 +18,7 @@ head
     br
     h2 
     a.btn.btn-default(href='/comments/edit/'+comment._id) Editer
-    a.btn.btn-danger.delete-comment(href='#',data-id=comment._id) Supprimer
+    a.btn.btn-danger.delete-comment(data-id="#(comment.id)") Supprimer
 
   .container
     h1= comment.first_name

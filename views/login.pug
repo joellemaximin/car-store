@@ -11,19 +11,23 @@ head
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   meta(http-equiv='X-UA-Compatible' content='ie=edge')
-  
-  .container
-    img(src='' alt='')
+  link(rel='stylesheet' type='text/css' href='../styles.css')
 
+  #wrapper
+    .title-register
+      h2 Se connecter
     form(method='POST' action='/users/authenticate')
       .login-form
-        .form-group
-        label Username 
-          input.form-control.col(type='text', name='username')
-          br
-        .form-group
-        label Mot de passe
-          input.form-control.col(type='password', name='password')
+        .form-group.row
+          label.col-sm-2.col-form-label Username
+          .col-sm-10
+            input.form-control(type='text', name='username')
+        
+        .form-group.row
+          label.col-sm-2.col-form-label(for='inputPassword') Password
+          .col-sm-10
+            input.form-control(type='password', placeholder='Password' name='password')
+
         br
         input(type='submit', value='Login')
 // enbuild

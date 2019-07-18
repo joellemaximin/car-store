@@ -4,7 +4,7 @@ const multer = require('multer');
 
 //set Storage Engine for multer
 const Storage = multer.diskStorage({
-    destinantion: './public/uploads/',
+    destination: './public/uploads/',
     filename: function(req, file, cb){
         db(null, file.fieldname + '-' + Date.now() +
         path.extname(file.originalname));
@@ -88,30 +88,30 @@ router.post('/add', function(req, res){
         car.car_moteur = req.body.car_moteur;
         car.car_type = req.body.car_type;
         
-        upload(req, res, (err) => {
-            if(err){
-                res.render('add_caradmin', {
-                    msg: err
-                });
-            } else {
-                if(req.file == undefined){
-                    res.render('index', {
-                        msg: 'Error: No File selected!'
-                    });
-                } else {
-                    if (req.file == undefined){
-                        res.render('index', {
-                            msg: 'Error: Pas de fichier sélectionner'
-                        });
-                    } else {
-                        res.render('index', {
-                            msg: 'Fichier uploaded',
-                            file: 'uploads/${req.file.filename}'
-                        });
-                    }
-                }
-            }
-        })
+        // upload(req, res, (err) => {
+        //     if(err){
+        //         res.render('add_caradmin', {
+        //             msg: err
+        //         });
+        //     } else {
+        //         if(req.file == undefined){
+        //             res.render('index', {
+        //                 msg: 'Error: No File selected!'
+        //             });
+        //         } else {
+        //             if (req.file == undefined){
+        //                 res.render('index', {
+        //                     msg: 'Error: Pas de fichier sélectionner'
+        //                 });
+        //             } else {
+        //                 res.render('index', {
+        //                     msg: 'Fichier uploaded',
+        //                     file: 'uploads/${req.file.filename}'
+        //                 });
+        //             }
+        //         }
+        //     }
+        // })
         car.save(function (err){
             if(err){
                 console.log(err);
@@ -172,16 +172,17 @@ router.post('/edit/:id', function(req, res){
 });
 
 //deleting post
-router.delete('/:id', function(req,res){
-    let query = {_id:query.params.id}
+router.get('/delete', function(req,res){
+    // let query = {_id:query.params.id}
 
-    Comment.remove(query, function(err){
+    Car.deleteOne({_id: new mongodb.ObjectID(id)});
         if(err){
             console.log(err)
         }
         // res.flash('  ', 'Comment Delete')
         res.send('Success');
-    });
+        res.redirect('/')
+
 });
 
 module.exports = router;
