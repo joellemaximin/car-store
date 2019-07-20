@@ -6,7 +6,7 @@ head
   script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
   // Aminate.css
   //- link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css')
-  //- script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+  script(src='https://code.jquery.com/jquery-3.3.1.min.js')
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   meta(http-equiv='X-UA-Compatible' content='ie=edge')
@@ -44,7 +44,6 @@ head
     thead
       tr
         th(scope='col') ID
-        th(scope='col') Status
         th(scope='col') Car Name
         th(scope='col') Prix
         th(scope='col') Type
@@ -58,7 +57,6 @@ head
       each car, i in cars
         tr
           th(scope='row' href='/cars/'+car._id)= car.car_id
-          td(href='/cars/'+car._id)= car.status
           td(href='/cars/'+car._id)= car.car_name
           td(href='/cars/'+car._id)= car.car_price
           td(href='/cars/'+car._id)= car.car_type
@@ -68,6 +66,12 @@ head
           td(href='/cars/'+car._id)= car.car_images
           td
             a.btn.btn-primary(href='/admin/edit/'+car._id type='button') Editer
-            a(href='/admin/delete/'+car._id type='button').btn.btn-danger Supprimer
+            form(action="/admin/delete/" + car._id, method="POST")
+              input(type="hidden", id="deleteId", value=car._id)
+              button(type='button', class="delete").btn.btn-danger Supprimer
+
+
+  script(src='../js/caradmin.js')
+
 // enbuild
 

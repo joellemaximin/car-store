@@ -3,10 +3,11 @@ head
   // Latest compiled and minified CSS
   script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
   // Aminate.css
-  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css')
   link(rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
   script(src='https://code.jquery.com/jquery-3.3.1.js')
   link(rel='stylesheet' type='text/css' href='./styles.css')
+  //- script(src='https://www.google.com/recaptcha/api.js?render=6Lf_ma4UAAAAAKqr94E0E0oEKpr7GqifOvbfHu84
+//- ')
 
   title Document
 // Header
@@ -34,128 +35,149 @@ header#contactUs
   h3 Other ways we can to help
   .wrapper
     div
-      // by email
-      button#animateBtn.optionItem By email
+      //-------------------- By email
+      button#animateBtn.optionItem(type='button', data-toggle='modal', data-target='#modal1') By email
       #contact-email.contentItem(data-type-holder='email')
-        header.sub-header
-          h3 Please complete the form below and we&apos;ll be in touch soon.
-          form(action='/contact-us/envoyer-nous-un-petit-mot' method='POST')
-          #contact-email-title
-            label.required(for='title') Title: *
-            #uniform-title.input-select.fixedWidth
-              span(style='user-select: none;')
-              select#title.form-control(name='title' aria-describebdy='title-tooltip')
-                option(value='Mr') Mr
-                option(value='Mrs') Mrs
-                option(value='Ms') Ms
-                option(value='Lord') Lord
-                option(value='Lady') Lady
-          #contact-email--first-name
-            label.required(for='first-name') First name: *
-            input#firstName.form-control(type='text' name='firstname' value='' aria-describebdy='title-name-tooltip')
-          #contact-email--last-name
-            label.required(for='last-name') Last name: *
-            input#lastName.form-control(type='text' name='lastname' value='' aria-describebdy='title-name-tooltip')
-          #contact-email--phone
-            label.required(for='phone') Phone number: *
-            input#phone.form-control(type='tel' name='phone' value='' aria-describebdy='phone-tooltip')
-          #contact-email--email-address
-            label.required(for='email-address') Email Adress: *
-            input#email-address.form-control(type='text' name='email' value='' aria-describebdy='email-address-tooltip')
-          #contact-email--querytype
-            label.required(for='queryType') Please select your query type: *
-            #uniform-queryType.input-select-wide.fixedWidth
-              span(style='user-select: none;') I want a new Volkswagen
-              select#queryType.form-control(name='querytype')
-                option(value='I have a question about technology') I have a question about technology
-                option(value="I'd like to know about Vlokswagen") I&apos;d like to know about Vlokswagen
-                option(value='I want a new Vlokswagen') I want a new Vlokswagen
-                option(value='No one of these? Please write to us') No one of these? Please write to usMs
-            br
-            #contact-email--text-area
-              label(for='vehicleRegistrationNo')
-                | If it&apos;s about a Volkswgen vehicle, please enter your registration number: 
-                .info-tooltip(role='tooltip' data-ng-open='true')
-                  span.glyphicon.glyphicon-info-sign(aria-hidden='true')
-                    | We&apos;ll use to find your vehicle on our systems
-                  .info-tooltip__tooltip-arrow-down(data-arrow-down='' style='transform: rotate(180deg); left: 95%;')
-              input#vehicleRegistrationNo.form-control(type='text' name='vehicleRegistrationNo' value='' aria-describebdy='reg-number--tooltip')
-            #contact-email--message
-              label(for='message') Your message: *
-              textarea#message.form-control(name='message' rows='5')
-            //
-              <div class="contact-email--recaptcha-no-label message">
-              <script src="#https://www.google.com/recaptcha/api.js" async defer></script>
-              <div class="#g-recaptcha" data-sitekey="#"></div>
-              </div>
-            br
-            a(href='#Privacy Statement') Privacy Statement
+        
+        .sub-header#modal1.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+          .modal-dialog(role='document')
+            .modal-content
+              .modal-header
+                h3#exampleModalLabel.modal-title Please complete the form below and we&apos;ll be in touch soon.
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                  form(action='/contact-us/envoyer-nous-un-petit-mot' method='POST')
+                  #contact-email-title
+                    label.required(for='title') Title: *
+                    #uniform-title.input-select.fixedWidth
+                      span(style='user-select: none;')
+                      select#title.form-control(name='title' aria-describebdy='title-tooltip')
+                        option(value='Mr') Mr
+                        option(value='Mrs') Mrs
+                        option(value='Ms') Ms
+                        option(value='Lord') Lord
+                        option(value='Lady') Lady
+                  #contact-email--first-name
+                    label.required(for='first-name') First name: *
+                    input#firstName.form-control(type='text' name='firstname' value='' aria-describebdy='title-name-tooltip')
+                  #contact-email--last-name
+                    label.required(for='last-name') Last name: *
+                    input#lastName.form-control(type='text' name='lastname' value='' aria-describebdy='title-name-tooltip')
+                  #contact-email--phone
+                    label.required(for='phone') Phone number: *
+                    input#phone.form-control(type='tel' name='phone' value='' aria-describebdy='phone-tooltip')
+                  #contact-email--email-address
+                    label.required(for='email-address') Email Adress: *
+                    input#email-address.form-control(type='text' name='email' value='' aria-describebdy='email-address-tooltip')
+                  #contact-email--querytype
+                    label.required(for='queryType') Please select your query type: *
+                    #uniform-queryType.input-select-wide.fixedWidth
+                      span(style='user-select: none;') I want a new Volkswagen
+                      select#queryType.form-control(name='querytype')
+                        option(value='I have a question about technology') I have a question about technology
+                        option(value="I'd like to know about Vlokswagen") I&apos;d like to know about Vlokswagen
+                        option(value='I want a new Vlokswagen') I want a new Vlokswagen
+                        option(value='No one of these? Please write to us') No one of these? Please write to usMs
+                    br
+                    #contact-email--text-area
+                      label(for='vehicleRegistrationNo')
+                        | If it&apos;s about a Volkswgen vehicle, please enter your registration number: 
+                        .info-tooltip(role='tooltip' data-ng-open='true')
+                          span.glyphicon.glyphicon-info-sign(aria-hidden='true')
+                            | We&apos;ll use to find your vehicle on our systems
+                          .info-tooltip__tooltip-arrow-down(data-arrow-down='' style='transform: rotate(180deg); left: 95%;')
+                      input#vehicleRegistrationNo.form-control(type='text' name='vehicleRegistrationNo' value='' aria-describebdy='reg-number--tooltip')
+                    #contact-email--message
+                      label(for='message') Your message: *
+                      textarea#message.form-control(name='message' rows='5')
+                    br
+                    a(href='') Privacy Statement
 
-            input#SendEmail.form-control(type='submit' name='SendEmail' value='Send Email')
+                    input#SendEmail.form-control(type='submit' name='SendEmail' value='Send Email')
+                .modal-footer
+                  button.btn.btn-secondary(type='button', data-dismiss='modal') Close
 
-
-            
-    // ----------------------- PHONE --------------
+    // ----------------------- PHONE 
     div
-      button#phoneLinks.optionItem On Call
+      button#phoneLinks.optionItem(type='button', data-toggle='modal', data-target='#modal2') On Call
       // by phone
-      #animateBtn.contentItem(data-type-holder='phone')
-        h3 Here you can find some numbers to call us
-        #customerCare(style='text-align: center;')
-          h3 Customer Care
-          p Mon - Sun: 8:00 AM - 8:00 PM
-          .number(title='customerCare')
-            | (+44) 0745 2322 246
-        #generalEnquire(style='text-align: center;')
-          h3 General Enquier
-          p Mon - Fri: 8:00 AM - 6:00 PM
-          p Sat: 8:00 AM 4:00 PM
-          .number(title='generalEnquire')
-            | (+44) 0745 2902 293
-          br
+      .sub-header#modal2.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+        .contentItem(data-type-holder='phone')
+        #customerCare(style='text-align: center;')  
+          .modal-dialog(role='document')
+            .modal-content
+              .modal-header
+                h3#exampleModalLabel.modal-title Here you can find some numbers to call us
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+              .modal-body
+                h3 Customer Care
+                p Mon - Sun: 8:00 AM - 8:00 PM
+                .number(title='customerCare')
+                  | (+44) 0745 2322 246
+                #generalEnquire(style='text-align: center;')
+                h3 General Enquier
+                p Mon - Fri: 8:00 AM - 6:00 PM
+                p Sat: 8:00 AM 4:00 PM
+                .number(title='generalEnquire')
+                  | (+44) 0745 2902 293
+                br
+              .modal-footer
+                button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                button.btn.btn-primary(type='button') Save changes
+  
+    
 
-
-      // contact-fb-tw
-      #animateBtn.contentItem(data-type-holder='contact-fb-tw')
-        h3 Here are our social links
-        #facebook-link
-          i.fab.fa-facebook
-          h4  Find us on Facebook
-        #twitter-link
-          i.fab.fa-twitter
-          h4 On Twitter
-
-
-      // contact letter
+    // -------------------contact letter
     div
-      button#letter.optionItem By posting a letter
-      #animateBtn.contentItem(data-type-holder='contact-letter')
-        #customerCare(style='text-align: center;')
-          h3 Customer Care
-          address
-            | Manchester 20 
-            br
-            |  Hyde
-            br
-            |  M32 338
-        #headOffice(style='text-align: center;')
-          h3 Head Office
-          address
-            | Edimbourg 
-            br
-            |  Blackford
-            br
-            |  M35 338
+      button#animateBtn.optionItem(type='button', data-toggle='modal', data-target='#modal4') By posting a letter
+      #contact-email.contentItem(data-type-holder='contact-letter')
+
+          .sub-header#modal4.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  h3#exampleModalLabel.modal-title Customer Care
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                      span(aria-hidden='true') ×
+                  .modal-body
+                    address
+                    | Manchester 20 
+                    br
+                    |  Hyde
+                    br
+                    |  M32 338
+                    #headOffice(style='text-align: center;')
+                      h3 Head Office
+                    address
+                      | Edimbourg 
+                      br
+                      |  Blackford
+                      br
+                      |  M35 338
+                  .modal-footer
+                    button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+  
 
 
       // contact-Inperson
     div
-      button#postcode.optionItem In per
+      button#postcode.optionItem(type='button', data-toggle='modal', data-target='#modal5') In per
       #animateBtn.contentItem(style='text-align: center;' data-type-holder='contact-postcode')
-        h3 contact your nearest retailer
-        div
-          p Enter your postcode or retailer&apos;s name
-          a(href='#') here to put the postcode
+
+        .sub-header#modal5.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+          .modal-dialog(role='document')
+            .modal-content
+              .modal-header
+                h3#exampleModalLabel.modal-title contact your nearest retailer
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                .modal-body
+                  div
+                    p Enter your postcode or retailer&apos;s name
+                    a(href='#') here to put the postcode
+                .modal-footer
+                  button.btn.btn-secondary(type='button', data-dismiss='modal') Close
 
 
 // Footer

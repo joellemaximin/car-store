@@ -1,0 +1,63 @@
+/********************** VEHICULE ****************/
+
+.model-offer-details-filter{
+    padding-bottom: 10px;
+    background-color: rgb(211, 226, 226);
+    font-family: 'VWTextRegular';
+    padding-top: 14px;
+}
+.model-offer-details-filter > .finance-option{
+    border-radius: 4px 0 0 4px;}
+
+.model-offer-details-filter > .list-of-offers, .services{
+    border-radius: 0 4px 4px 0;}
+    
+.model-offer-details-filter{
+    text-align: justify;
+    justify-content: center;
+    display: flex;
+    padding: 0;
+    list-style: none;
+
+}
+.nodetails > .active{
+    font-weight: 400;
+    background: #b8c5ca;
+    border-bottom: 4px solid #af6a6a;
+}
+.nodetails{
+    font-family: sans-serif;
+    cursor: pointer;
+    letter-spacing: -.2px;
+    margin-left: -1px;
+    margin-right: -1px;
+    border-right: 1px solid #b8c5ca;
+    text-align: center;
+}
+
+.filter-name{
+    padding:5px 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+.contentItem {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-in-out;
+}
+
+button.optionItem {
+    display: block;
+    color: #373f51;
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+}
+    
+
+/***************

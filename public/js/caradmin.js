@@ -1,9 +1,9 @@
-$('.delete-comment').on('click', function(e){
+$('.delete').on('click', function() { 
     let that = this;
     console.log($(that).prev().val());
-    if (confirm("Are you sure you want to delete this comment?")) {
+    if (confirm("Are you sure you want to delete this ressource?")) {
     $.ajax({
-    url: '/comments/' + $(that).prev().val(),
+    url: '/admin/delete/' + $(that).prev().val(),
     method: 'DELETE',
     }).done(function(res) { 
         console.log('deleted', res);

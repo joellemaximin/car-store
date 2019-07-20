@@ -32,6 +32,8 @@ router.get('/envoyer-nous-un-petit-mot', function(req, res){
     });
 })
 
+
+
 //je récupère mes donnée apres validation du form avec method post
 router.post('/envoyer-nous-un-petit-mot', function(req, res){
     let contact = new Contact();

@@ -9,7 +9,7 @@ head
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   meta(http-equiv='X-UA-Compatible' content='ie=edge')
-  link(rel='stylesheet' type='text/css' href='css/style.css')
+  link(rel='stylesheet' type='text/css' href='./css/vehicules.css')
   title Document
 
   nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
@@ -25,7 +25,7 @@ head
         a.nav-link(href='/contact-us') Contactez-nous
 
   
-  .col-lg-9.col-md-9.col-sm-9.col-xs-12.content
+  .content
     .content-area
       .top-filter.tfilter-box.margin-b-20
         .container
@@ -74,21 +74,23 @@ head
                   | Extérieur
                 option(value='6')
                   | Intérieur
-            .col-sm-2
+            .col
               button.btn.btn-primary.site-btn2(type='button') Submit
     
-  h2 Different model Car
+  h2.title-page Different type de voitures
   .clearfix
+
   section.liste-des-offres
     each car, i in cars
-      .container.row
+      .container-fluid.row
         div.imgvolkswagen.col-md-6
           //- img.img-top.img-fluid.col(src='/cars/'+car._id)= car.car_images     
           img.img-top.img-fluid(src='./images/e-Golf.png', alt='...')
         div.descriptifvolkswagen.col-md-6
+          div.text-group-volkswa
             h5.title(href='/cars/'+car._id)= car.car_name
             p.text(href='/cars/'+car._id)= car.car_price
-            a.btn.btn-primary(href='/all-cars/car/'+car._id) Visiter
+            a.btn.btn-carid(href='/all-cars/car/'+car._id) Visiter
 
 
 // Footer

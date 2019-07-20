@@ -73,13 +73,12 @@ br
         .card-body
           h5.card-title(href='/cars/'+car._id)= car.car_name
           p.card-text(href='/cars/'+car._id)= car.car_price
-          a.btn.btn-primary(href='') Visiter
+          a.btn.btn-primary(href='href='/all-cars/car/'+car._id') Visiter
 
 
   // POPUP prendre rendez vous
-
-  div.backmodal
-    .container-wide.formpopup
+  div#backmodal(displayed="false")
+    .container-wide#formpopup.modal
       span.closeBtn &times;
       h2.title-modal Vous voulez un rendez-vous avec l'un de nos conseiller ?
 
@@ -116,6 +115,8 @@ br
           | 1902: Volkswagen produces its first engine and files a patent for the first turbo.
           | 1903: The sales network expands and the first subsidiaries are set up outside France.
         a.bodyText.bodyLink(href='history.html') Find out more
+  
+  
   // CUSTOMER content
   #contentGlobal-customers
     a.container-lg
@@ -131,7 +132,6 @@ br
           img.mac(src='images/icons8-client-mac.png' alt='mac')
 
   //modal clientsList
-
   div#iconmodal
     .container-wide.iimodal
       span.closeBtn &times;
@@ -189,9 +189,9 @@ br
     .clearfix
      
       p.title-footer(href='#') Map  
+  
   script(src='./js/modal.js')
 
   //- script(src='js/index.js')
   //- script(src='/bower_components/jquery/dist/jquery.js')
-
   // enbuild

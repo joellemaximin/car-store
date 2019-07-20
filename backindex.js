@@ -72,7 +72,6 @@ let User = require('./models/user');
 // let Newsletter = require('./models/newsletter');
 let Comment = require('./models/comments');
 let Admin = require('./models/admin');
-// var Reservation = require('./models/reserve');
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -87,7 +86,6 @@ var Jantes = mongoose.model('carjantes');
 var Moteurs = mongoose.model('carmoteurs');
 var Comments = mongoose.model('comments');
 var Admins = mongoose.model('caradmins');
-// var reserve = mongoose.model('reservation');
 
 // var generations = mongoose.model('cargenerations');
 
@@ -121,11 +119,11 @@ app.use(express.urlencoded({
     
 // });
 
-// //Passport config
-// require('./config/passport')(passport);
-// //passport middleware
-// app.use(passport.initialize());
-// app.use(passport.session());
+//Passport config
+require('./config/passport')(passport);
+//passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get('*', function(req, res, next){
     res.locals.user= req.user || null;
@@ -152,13 +150,10 @@ app.use('/car-options', options);
 let caradmins = require('./routes/caradmins');
 app.use('/admin', caradmins);
 
-
 let commadmins = require('./routes/commentadmin');
 app.use('/admin-comments', commadmins); 
-
-// let reservation = require('./routes/reserve');
-// app.use('/reserve-ta-voiture', reservation); 
  
+
 // let usersdmins = require('./routes/newslettersadmins');
 // app.use('/admin-newsletters', newsladmins); 
 

@@ -18,10 +18,10 @@ let caradminSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    car_images: {
-        type: String,
-        require: false
-    },
+    // car_images: {
+    //     type: String,
+    //     require: false
+    // },
     car_couleur: {
         type: String,
         require: true
@@ -33,10 +33,6 @@ let caradminSchema = mongoose.Schema({
     car_jantes: {
         type: String, 
         require: true
-    },
-    status: {
-        type: Boolean,
-        require: false
     }
 
 });

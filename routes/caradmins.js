@@ -3,13 +3,13 @@ let router = express.Router();
 const multer = require('multer');
 
 //set Storage Engine for multer
-const Storage = multer.diskStorage({
-    destination: './public/uploads/',
-    filename: function(req, file, cb){
-        db(null, file.fieldname + '-' + Date.now() +
-        path.extname(file.originalname));
-    }
-});
+// const Storage = multer.diskStorage({
+//     destinantion: './public/uploads/',
+//     filename: function(req, file, cb){
+//         db(null, file.fieldname + '-' + Date.now() +
+//         path.extname(file.originalname));
+//     }
+// });
 
 //Init upload
 // const upload = multer({
@@ -84,9 +84,11 @@ router.post('/add', function(req, res){
         car.car_jante = req.body.car_jante;
         car.car_couleur = req.body.car_couleur;
         car.car_options = req.body.car_options;
-        car.car_images = req.body.car_images;
+        // car.car_images = req.body.car_images;
         car.car_moteur = req.body.car_moteur;
         car.car_type = req.body.car_type;
+
+        console.log(car, "TEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEST")
         
         // upload(req, res, (err) => {
         //     if(err){
@@ -154,7 +156,7 @@ router.post('/edit/:id', function(req, res){
     car.car_jante = req.body.car_jante;
     car.car_couleur = req.body.car_couleur;
     car.car_options = req.body.car_options;
-    car.car_images = req.body.car_images;
+    // car.car_images = req.body.car_images;
     car.car_moteur = req.body.car_moteur;
     car.car_type = req.body.car_type;
 
@@ -172,19 +174,47 @@ router.post('/edit/:id', function(req, res){
 });
 
 //deleting post
-router.get('/delete', function(req,res){
+// router.route('/test/:id')
+// router.get("/test/:id", function(req,res){
+
+//     Car.findById(req.params.id, function(err, car){
+//         {
+//         car:car
+//         };
+//     });
+// });
     // let query = {_id:query.params.id}
 
-    Car.deleteOne({_id: new mongodb.ObjectID(id)});
-        if(err){
-            console.log(err)
-        }
+    // Car.remove(query, function(err){
+    //     if(err){
+    //         console.log(err)
+    //     }
         // res.flash('  ', 'Comment Delete')
-        res.send('Success');
-        res.redirect('/')
+// router.delete("/test/:id",function(req,res){
+//         Car.deleteOne({_id: req.params._id}, function(err, car){
+//          console.log(Car, "TEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEES")            
 
+//             if (err){
+//             res.send(err)
+//         }
+//         res.json({message : car._id + "tout est supprimé baby sexy love de tout mon coeur qui m'exite la cuisse quand je bad devant la télé comme un américain moyen"});
+//         // res.send('Success'); 
+        
+// })
+// });
+
+router.delete('/delete/:id', function(req, res){
+    console.log(req)
+    Car.remove({ _id: req.params.id }, function(err) {
+        if (!err) {
+            res.send("ok supprimé")
+        }
+        else {
+            res.send('error');
+        }
+    });
 });
 
-module.exports = router;
 
+module.exports = router;
 

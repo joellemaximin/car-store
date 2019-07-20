@@ -3,10 +3,6 @@ var Schema = mongoose.Schema;
 
 
 let userSchema = mongoose.Schema({
-    // comment: {
-    //     type: mongoose.Schema.Type.ObjectId, ref: 'comments',
-    //     require: false
-    // },
     email: {
         type: String, 
         required: true

@@ -4,7 +4,8 @@
   "description": "",
   "main": "backindex.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon backindex.js"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,7 @@
     "connect-flash": "^0.1.1",
     "consolidate": "^0.15.1",
     "cors": "^2.8.5",
-    "express": "^4.17.0",
+    "express": "^4.17.1",
     "express-messages": "^1.0.1",
     "express-session": "^1.16.1",
     "express-validator": "^5.3.1",
@@ -38,6 +39,7 @@
     "multer": "^1.4.1",
     "node-install": "^2.1.2",
     "nodemailer": "^6.2.1",
+    "nodemon": "^1.19.1",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",

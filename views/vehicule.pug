@@ -5,22 +5,56 @@ head
   // Aminate.css
   link(rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
   link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css')
+  script(src='https://code.jquery.com/jquery-3.3.1.min.js')
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   meta(http-equiv='X-UA-Compatible' content='ie=edge')
-  link(rel='stylesheet' type='text/css' href='css/style.css')
-  title Document
+  link(rel='stylesheet' type='text/css' href='../../vehicule.css')
+  title Vehicule
+  
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    ul.nav.nav-pills.nav-fill
+      li.nav-item
+        a.nav-link.active(href='') Home
+      li.nav-item
+        a.nav-link(href='/all-cars') Vehicules
+      li.nav-item
+        a.nav-link(href='/reserver') Réservation
+      li.nav-item
+        a.nav-link(href='/contact-us') Contactez-nous
 
-  .main
-  h2 Une voiture
-  .clearfix
-      h2= car.car_name
-      p= car.car_price
-      p= car.car_type
-      p= car.car_jante
-      p= car.car_options
-      p= car.car_moteur
-      p= car.car_images
+  img.img-fluid(src='../../images/e-Up.png', alt='Responsive image')
+  
+  .container
+    div
+    .model-offer-details-filter
+      ul.nav.nav-tabs(role='tablist')
+        li.active.nodetails(role='presentation')
+          a(href='#optionfinance', aria-controls='optionfinance', role='tab', data-toggle='tab') Options Financière
+        li.nodetails(role='presentation')
+          a(href='#optioncar', aria-controls='optioncar', role='tab', data-toggle='tab') Accessoires
+        li.nodetails(role='presentation')
+          a(href='#optionrent', aria-controls='optionrent', role='tab', data-toggle='tab') Formulaire pour Louer
+
+      .tab-content.model-offer-details-content
+        #optionfinance.tab-pane.active(role='tabpanel') Finance, Solutions, Caution
+          p= car.car_name
+          p= car.car_price
+          p= car.car_type
+        #optioncar.tab-pane(role='tabpanel') Les jantes, Options Intérieurs, le moteur
+          p= car.car_jante
+          p= car.car_options
+          p= car.car_moteur
+        #optionrent.tab-pane(role='tabpanel') Louer la voiture
+          p reservation tableau prix/saisons
+
+            //- = car.car_images
+
+
+
+
+
 
 
 // Footer
@@ -52,4 +86,10 @@ head
     .col
       ul.shop-box
         li.title-footer(href='#') Map
+
+
+script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+
 // enbuild

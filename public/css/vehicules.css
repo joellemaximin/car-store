@@ -1,0 +1,69 @@
+.content-area{
+    padding-top: 26px;
+    padding-bottom: 25px;
+    width: 100%;
+    background-color: rgb(233, 233, 233);
+}
+
+.site-btn2{
+    float: right;
+    margin: -38px -85px;
+    overflow-y: hidden;
+}
+
+.row{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
+.liste-des-offres{
+    padding: 24px 14px;
+}
+.imgvolkswagen{
+    padding: 25px 55px;
+    background-color: rgb(230, 223, 223);
+    border-radius: 3%;
+    margin-bottom: 25px;
+    flex-direction: column-reverse;
+}
+
+.descriptifvolkswagen{
+
+    padding: 25px 25px;
+}
+
+.text-group-volkswa{
+    padding: 14px 14px;
+    margin-top: 25px;
+    margin-bottom: 26.6px;
+}
+
+h2.title-page{
+    letter-spacing: 3px;
+    font-size: 29px;
+    color: rgb(32, 32, 32); 
+    text-align: center;
+}
+.btn-carid{
+    padding: 15px 25px;
+    background-color: rgb(231, 228, 228);
+    border-radius: 3%;
+}
+
+.btn-carid:hover{
+    background-color: rgb(182, 146, 170);
+}
+
+p.text{
+    color: rgb(32, 32, 32); 
+    font-size: 15px;
+}
+
+h5.title{
+    font-size: 20px;
+    color:rgb(204, 223, 235);
+}
+
+.text-group-volkswa > .text .btn-carid{
+    float: left;
+}
