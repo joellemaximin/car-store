@@ -35,4 +35,4 @@ let MoteurSchema = mongoose.Schema({
 
 });
 
-let carMoteur = module.exports = mongoose.model('carmoteurs', MoteurSchema);
+let carMoteur = module.exports = mongoose.model('moteurs', MoteurSchema);

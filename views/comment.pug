@@ -15,21 +15,12 @@ head
 #wrapper
   .title-newsletter      
     h2 #{title}
-    br
-    h2 
-    a.btn.btn-default(href='/comments/edit/'+comment._id) Editer
-    form(action="comments/" + comment._id, method="POST")
-      input(type="hidden", id="deleteId", value=comment._id)
-      button(type='button', class="delete").btn.btn-danger Supprimer
 
   .container
     h1= comment.first_name
     h1= comment.last_name
     p=  comment.email
     p=  comment.body
-
-
-  script(src='../js/comments.js')
 
 // enbuild
 

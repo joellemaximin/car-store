@@ -19,11 +19,7 @@ let contactSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    querytype: {
-        type: String,
-        require: true
-    },
-    vehicleRegistrationNo: {
+    vehiculeregistrationNo: {
         type: String,
         require: false
     },

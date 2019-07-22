@@ -2,7 +2,7 @@ let express = require('express');
 let router = express.Router();
 
 //get the comment model
-let Option = require('../models/caroption');
+let Option = require('../models/caroptions');
 
 router.get('/', function(req, res){
     Option.find({}, function(err, options){

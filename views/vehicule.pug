@@ -24,38 +24,102 @@ head
       li.nav-item
         a.nav-link(href='/contact-us') Contactez-nous
 
-  img.img-fluid(src='../../images/e-Up.png', alt='Responsive image')
   
   .container
-    div
-    .model-offer-details-filter
-      ul.nav.nav-tabs(role='tablist')
-        li.active.nodetails(role='presentation')
-          a(href='#optionfinance', aria-controls='optionfinance', role='tab', data-toggle='tab') Options Financière
-        li.nodetails(role='presentation')
-          a(href='#optioncar', aria-controls='optioncar', role='tab', data-toggle='tab') Accessoires
-        li.nodetails(role='presentation')
-          a(href='#optionrent', aria-controls='optionrent', role='tab', data-toggle='tab') Formulaire pour Louer
+    section.img-car-about
+      img.img-fluid(src='../../images/e-Up.png', alt='Responsive image')
+    
+    .container-fluid
+      div
+        .model-offer-details-filter
+          ul.list-of-offers.nav.nav-tabs#myTab(role="tablist")
+            li.nav-item.nodetails.active(role='offer')
+              a.nav-link(href='#optionfinance', aria-controls='optionfinance', role='tab', data-toggle='tab') Options Financière
+            li.nav-item.nodetails(role='offer')
+              a.nav-link(href='#optioncar', aria-controls='optioncar', role='tab', data-toggle='tab') Accessoires
+            li.nav-item.nodetails(role='offer')
+              a.nav-link(href='#optionrent', aria-controls='optionrent', role='tab', data-toggle='tab') Formulaire pour Louer
 
-      .tab-content.model-offer-details-content
-        #optionfinance.tab-pane.active(role='tabpanel') Finance, Solutions, Caution
-          p= car.car_name
-          p= car.car_price
-          p= car.car_type
-        #optioncar.tab-pane(role='tabpanel') Les jantes, Options Intérieurs, le moteur
-          p= car.car_jante
-          p= car.car_options
-          p= car.car_moteur
-        #optionrent.tab-pane(role='tabpanel') Louer la voiture
-          p reservation tableau prix/saisons
+          .tab-content.model-offer-details-content
+            #optionfinance.tab-pane.active(role='tabpanel')
+              .row
+                h3.col-md-4.model-offer-details__subtab-title Finance, Solutions, Caution
+                div.col-md-8.place-content
+                  
+                  ul 
+                    li Représentant APR 
+                      h2.voiture-carname= car.car_name
 
-            //- = car.car_images
+                    li Par mois, le prix sera de
+                      p= car.car_price
+
+                    li 750 E pour votre dépôt avec Solutions PCP.
+                    
+                    li Le prix au comptant comprend une subvention de 3 500 £ du gouvernement pour une voiture rechargeable
+                    
+                    li Un modèle de type: 
+                      p= car.car_type
+
+                    li Disponible dans ces couleurs:
+                      p= car.couleurs
+                    
+                    li 
+                      //- img.img-top.img-fluid.col= car.carimage    
+
+                    
+                    div
+                      h3.terms-and-condition
+                        #termsPreventaccordion.accordion
+                          
+                          h2
+                            a.btn.btn-link(data-toggle='collapse', data-target='#collapseAccordion', aria-expanded='false', aria-controls='collapseAccordion')
+                              | Termes et conditions
+                        #collapseAccordion.collapse.hide( data-parent='#termsPreventaccordion')
+                          .card-body
+                            | † À la fin de la convention, trois options sont disponibles: i) payer le paiement final optionnel et devenir propriétaire du véhicule; ii) restituer le véhicule: sous réserve de kilométrage excessif et d'usure normale, des frais peuvent être facturés; ou iii) remplacer: échange de pièce du véhicule
+
+                            | 1 750 £ de versement sur votre dépôt à l’achat sur Solutions PCP.
+
+                            | 2 Frais d'acceptation non requis.
+
+                            | 3Payable à la fin de votre contrat.
+
+                            |  Avec Solutions Plan de contrat personnel. Dépôt de client de 15% requis. 18s +. Sous réserve de statut et de disponibilité. Les conditions s'appliquent. Disponible sur e-Golf uniquement. Offre disponible sur commande du 30/09/19 des détaillants participants. Des indemnités peuvent être requises. Non cumulable avec toute autre offre et peut être retiré à tout moment. Précis au moment de la publication le 01/07/19. Service Financier Volkswagen Volkswagen
+
+                                                  
+                    button.testdrivebutton Essaie de voiture
 
 
+            #optioncar.tab-pane(role='tabpanel') 
+              .row
+                h3.col-md-4.model-offer-details__subtab-title Les jantes, Options Intérieurs, le moteur
+                div.col-md-8.place-content  
+                  ul
+                    li Moteurs pour ce modèles:
+                      p= car.moteurs
+
+                    li Nos options:
+                      p= car.options
+                                        
+                    li Financement possible:
+                      p= car.finance
+                    
+                    li Nombre de places:
+                      p= car.places
+
+                    button.descriptioncarbutton Voir les détails de la voiture
 
 
+            #optionrent.tab-pane(role='tabpanel') 
+              .row
+                h3.col-md-4.model-offer-details__subtab-title Louer la voiture
+                div.col-md-8.place-content
+                  h4 Location
+                    br
+                    
+                    button.reservationcar Louer une voiture
 
-
+          
 
 // Footer
 #contentGlobal-footer(style='background-color:lightgray;')

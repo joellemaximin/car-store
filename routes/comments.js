@@ -108,7 +108,7 @@ router.post('/edit/:id', function(req, res){
 });
 
 //deleting post
-router.delete('/delete/:id', function(req,res){
+router.delete('/:id', function(req,res){
     Comment.remove({_id:req.params.id}, function(err){
         if(!err){
             res.send("Commentaire bien supprimé");

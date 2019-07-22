@@ -33,6 +33,14 @@ head
               a(href='/admin-comments').btn.btn-outline-primary Liste des commentaires
             li 
               a(href='/admin-newsletters').btn.btn-outline-primary Liste des newsletters
+            //- li 
+            //-   a(href='/admin-options').btn.btn-outline-primary Cat des options
+            //- li 
+            //-   a(href='/admin-couleurs').btn.btn-outline-primary Liste des newsletters
+            //- li 
+            //-   a(href='/admin-finance').btn.btn-outline-primary Liste des options finance
+            //- li 
+            //-   a(href='/admin-users').btn.btn-outline-primary Liste des utilisateurs
   
     a.btn.btn-default(href='/admin/add').btn.btn-outline-info Ajouter une voiture :) 
     br
@@ -47,10 +55,12 @@ head
         th(scope='col') Car Name
         th(scope='col') Prix
         th(scope='col') Type
-        th(scope='col') Jante
+        th(scope='col') Couleurs
         th(scope='col') Option
         th(scope='col') Moteur
         th(scope='col') Images
+        th(scope='col') ImageFirst
+
         th(scope='col') Actions
 
     tbody
@@ -60,17 +70,19 @@ head
           td(href='/cars/'+car._id)= car.car_name
           td(href='/cars/'+car._id)= car.car_price
           td(href='/cars/'+car._id)= car.car_type
-          td(href='/cars/'+car._id)= car.car_jante
-          td(href='/cars/'+car._id)= car.car_options
-          td(href='/cars/'+car._id)= car.car_moteur
+          td(href='/cars/'+car._id)= car.couleurs
+          td(href='/cars/'+car._id)= car.options
+          td(href='/cars/'+car._id)= car.moteurs
           td(href='/cars/'+car._id)= car.car_images
+          td(src='/cars/'+car._id)= car.carimage
+
           td
             a.btn.btn-primary(href='/admin/edit/'+car._id type='button') Editer
             form(action="/admin/delete/" + car._id, method="POST")
               input(type="hidden", id="deleteId", value=car._id)
               button(type='button', class="delete").btn.btn-danger Supprimer
 
-
+ 
   script(src='../js/caradmin.js')
 
 // enbuild

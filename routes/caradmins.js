@@ -1,26 +1,30 @@
 let express = require('express');
 let router = express.Router();
 const multer = require('multer');
+// var upload = multer({ dest: 'uploads/' })
+var app = express();
+
+app.use(express.static('./public'));
 
 //set Storage Engine for multer
-// const Storage = multer.diskStorage({
-//     destinantion: './public/uploads/',
+// const storage = multer.diskStorage({
+//     destination: './public/uploads/',
 //     filename: function(req, file, cb){
-//         db(null, file.fieldname + '-' + Date.now() +
+//         cb(null, file.fieldname + '-' + Date.now() +
 //         path.extname(file.originalname));
 //     }
 // });
 
 //Init upload
 // const upload = multer({
-//     Storage: Storage,
+//     storage: storage,
 //     limits: {fileSize: 1000000},
-//     fileFilter: function(req, file, db){
+//     fileFilter: function(req, file, cb){
 //         checkFileType(file, cb)
 //     }
-// }).single('monImg');
+// }).single('myImg');
 
-// //check file type
+//check file type
 // function checkFileType(file, cb){
 //     const filetypes = /jpeg|jpg|png|gif/;
 //     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
@@ -36,15 +40,21 @@ const multer = require('multer');
 let Car = require('../models/admin');
 
 router.get('/', function(req, res){
+    // options:
+    // req.params.options, couleurs:
+    //     req.params.couleurs, moteurs:
+    //         req.params.moteur, finance_and_cost:
+    //             req.params.finance_and_cost
     Car.find({}, function(err, cars){
+
         if(err){
             console.log(err);
         } else {
-            console.log(cars);
+            console.log(cars, " affiche les");
 
             res.render('admin', {
                 title: "Admin page",
-                 cars: cars
+                cars: cars
             })
         }
     })
@@ -77,48 +87,48 @@ router.post('/add', function(req, res){
     //         errors:errors
     //     });
     // } else {
+        // upload(req, res, (err) => {
+
+        //     console.log(req.file);
+        //     res.send('test')
+                // if(req.file == undefined){
+                //     res.render('index', {
+                //         msg: 'Error: No File selected!'
+                //     });
+                // } else {
+                //     if (req.file == undefined){
+                //         res.render('index', {
+                //             msg: 'Error: Pas de fichier sélectionner'
+                //         });
+                //     } else {
+                //         res.render('index', {
+                //             msg: 'Fichier uploaded',
+                //             file: 'uploads/${req.file.filename}'
+                //         });
+                //     }
+                // }
+        //     }
+        // )
 
         let car = new Car();
         car.car_name = req.body.car_name;
         car.car_price = req.body.car_price;
-        car.car_jante = req.body.car_jante;
-        car.car_couleur = req.body.car_couleur;
-        car.car_options = req.body.car_options;
-        // car.car_images = req.body.car_images;
-        car.car_moteur = req.body.car_moteur;
+        car.finance_and_cost = req.body.finance_and_cost;
+        car.couleurs = req.body.couleurs;
+        car.options = req.body.options;
+        car.car_images = req.body.car_images;
+        car.carimage = req.body.carimage;
+        car.moteurs = req.body.moteurs;
         car.car_type = req.body.car_type;
-
-        console.log(car, "TEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEST")
+        car.places = req.body.places;
         
-        // upload(req, res, (err) => {
-        //     if(err){
-        //         res.render('add_caradmin', {
-        //             msg: err
-        //         });
-        //     } else {
-        //         if(req.file == undefined){
-        //             res.render('index', {
-        //                 msg: 'Error: No File selected!'
-        //             });
-        //         } else {
-        //             if (req.file == undefined){
-        //                 res.render('index', {
-        //                     msg: 'Error: Pas de fichier sélectionner'
-        //                 });
-        //             } else {
-        //                 res.render('index', {
-        //                     msg: 'Fichier uploaded',
-        //                     file: 'uploads/${req.file.filename}'
-        //                 });
-        //             }
-        //         }
-        //     }
-        // })
-        car.save(function (err){
+        
+        car.save(function (err, car){
             if(err){
                 console.log(err);
                 return;
             } else {
+                console.log(car)
                 res.redirect('/admin');
             }
         });
@@ -153,12 +163,14 @@ router.post('/edit/:id', function(req, res){
     let car = {};
     car.car_name = req.body.car_name;
     car.car_price = req.body.car_price;
-    car.car_jante = req.body.car_jante;
-    car.car_couleur = req.body.car_couleur;
-    car.car_options = req.body.car_options;
-    // car.car_images = req.body.car_images;
-    car.car_moteur = req.body.car_moteur;
+    car.finance_and_cost = req.body.finance_and_cost;
+    car.couleurs = req.body.couleurs;
+    car.options = req.body.options;
+    car.car_images = req.body.car_images;
+    car.carimage = req.body.carimage;
+    car.moteur = req.body.moteur;
     car.car_type = req.body.car_type;
+    car.places = req.body.places;
 
     let query = {_id:req.params.id}
 

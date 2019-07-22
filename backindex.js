@@ -3,6 +3,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 const cors = require('cors')
+const multer = require('multer');
 const config = require ('./config/database');
 mongoose.connect(config.database);
 let db = mongoose.connection;
@@ -58,15 +59,46 @@ const {
 // });
 
 
+// //set Storage Engine for multer
+// const storage = multer.diskStorage({
+//     destination: './public/uploads/',
+//     filename: function(req, file, cb){
+//         cb(null, file.fieldname + '-' + Date.now() +
+//         path.extname(file.originalname));
+//     }
+// });
+
+// //Init upload
+// const upload = multer({
+//     storage: storage,
+//     limits: {fileSize: 1000000},
+//     fileFilter: function(req, file, cb){
+//         checkFileType(file, cb)
+//     }
+// }).single('myImg');
+
+// // //check file type
+// function checkFileType(file, cb){
+//     const filetypes = /jpeg|jpg|png|gif/;
+//     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+//     const mimetype = filetypes.test(file.mimetype);
+
+//     if(mimetype && extname) {
+//         return cb(null, true);
+//     } else {
+//         cb('Error: Images Accepté seulement');
+//     }
+// }
+
 
 // let Car = require('./models/cars');
 let Contact = require('./models/contact');
-let CarOption = require('./models/caroption');
-let CarCouleurs = require('./models/carcouleur');
+let CarOption = require('./models/caroptions');
+let CarCouleurs = require('./models/couleurs');
 // let concessionaire = require('./models/concessionaire');
 let CarType = require('./models/cartype');
 let CarMoteur = require('./models/carmoteur');
-let CarJante = require('./models/carjante');
+// let Fin = require('./models/finance');
 // let CarGeneration = require('./models/cargeneration');
 let User = require('./models/user');
 // let Newsletter = require('./models/newsletter');
@@ -78,12 +110,12 @@ let Admin = require('./models/admin');
 // Les models
 var Users = mongoose.model('users');
 // var Cars = mongoose.model('carmodelees');
-var Options = mongoose.model('caroptions');
-var Couleurs = mongoose.model('carcouleurs');
+var Options = mongoose.model('options');
+var Couleurs = mongoose.model('couleurs');
 var Types = mongoose.model('cartypes');
 var Contacts = mongoose.model('contacts');
-var Jantes = mongoose.model('carjantes');
-var Moteurs = mongoose.model('carmoteurs');
+// var Jantes = mongoose.model('jantes');
+var Moteurs = mongoose.model('moteurs');
 var Comments = mongoose.model('comments');
 var Admins = mongoose.model('caradmins');
 
@@ -181,11 +213,7 @@ app.get('/', function(req, res){
 
 app.get('/all-cars', function(req, res){
     Admin.find({}, function(err, cars){
-        var products = [];
-        var displaySize = 3;
-        for (var i = 0; i < cars.length; i += displaySize) {
-            products.push(cars.slice(i, i + displaySize));
-        }
+        
         if(err){
             console.log(err);
         } else {
@@ -228,6 +256,7 @@ app.get('/all-comments', function(req, res){
     });
 });
 
+//indexpage
 app.get('/commentaires', function(req, res){
 
     Comments.find({}, function(err, comments){
@@ -241,6 +270,22 @@ app.get('/commentaires', function(req, res){
     });
 });
 
+/////reservation routes
+
+app.get('/reserver-une-voiture', function(req, res){
+    Comments.find({}, function(err, comments){
+        if(err){
+            console.log(err);
+        } else {
+            res.render('book-car', {
+               title: 'Tous nos commentaires',
+               comments: comments
+            });
+        }
+    });
+});
+
+//route for filter for cars, for all of them
 
 
 app.listen(3000, function(error){

@@ -7,8 +7,9 @@ head
   // Aminate.css
   link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css')
   link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap')
-  script(src='https://code.jquery.com/jquery-3.3.1.min.js')
-  script(src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+  // Compiled and minified JavaScript
+
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   meta(http-equiv='X-UA-Compatible' content='ie=edge')
@@ -42,7 +43,7 @@ head
       
       //- <%= typeof msg != 'undefined' ? msg : '' %>
 
-    form(method='POST' id='#' action='/admin/add')
+    form(method='POST' id='#' action='/admin/add' enctype="multipart/form-data")
       .car-form
         .form-row
           .form-group.col-md-6
@@ -61,9 +62,9 @@ head
           //- input.form-control(type='text'name='car_couleur' )
           select#inlineFormCustomSelect.custom-select.mr-sm-2
             option(selected='') Choose...
-            option(value='1') Red
-            option(value='2') Blue
-            option(value='3') Navy
+            option(value='red') Red
+            option(value='blue') Blue
+            option(value='navy') Navy
 
         br
         .form-group
@@ -80,14 +81,16 @@ head
             input.form-control(type='text' name='car_jante')
         br
 
-        //- .input-group-prepend
-        //-   span#inputGroupFileAddon01.input-group-text Upload
-        //- .custom-file
-        //-   input#inputGroupFile01.custom-file-input(type='file' name='monImg' aria-describedby='inputGroupFileAddon01')
-        //-   label.custom-file-label(for='inputGroupFile01') Choose file
-        //- .file-path-wrapper
-        //-   input.file-path.validate(type='text')
-      input.btn.btn-default(type='submit',value='Submit' )
+        .file-field.input-field
+          .btn
+            span File
+            input(type='file' name='myImg')
+          .file-path-wrapper
+            input.file-path.validate(type='text')
+        input.btn.btn-default(type='submit',value='Submit' )
   
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+  script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+  script(src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js')
 // enbuild
 

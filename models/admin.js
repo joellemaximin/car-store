@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 let caradminSchema = mongoose.Schema({
     car_name: {
         type: String,
-        require: true
+        require: true,
     },
     car_price: {
         type: String,
@@ -14,27 +14,38 @@ let caradminSchema = mongoose.Schema({
         type: String,
         require: true
     },     
-    car_options: {
+    options: {
         type: String,
+        options: [{type: mongoose.Schema.Types.ObjectId, ref: 'options'}],
+        require: true,
+    },
+    car_images: {
+        type: String,
+        require: false
+    },
+    couleurs:{
+        type: String,
+        ref: 'couleurs',
         require: true
     },
-    // car_images: {
-    //     type: String,
-    //     require: false
-    // },
-    car_couleur: {
+    moteur: [ {
         type: String,
+    } ],
+    finance: {
+        type: String,
+        ref: 'finance_and_cost',
+    },
+    places: {
+        type: Number,
         require: true
     },
-    car_moteur: {
+    carimage: {
         type: String,
-        require: true
-    }, 
-    car_jantes: {
-        type: String, 
-        require: true
     }
+
 
 });
 
+// caradminSchema = caradminSchema._id.toString();
 let Admin = module.exports = mongoose.model('caradmins', caradminSchema);
+ 
