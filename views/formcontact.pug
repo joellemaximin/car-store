@@ -14,13 +14,15 @@ head
   meta(http-equiv='X-UA-Compatible' content='ie=edge')
 
 
-.container
+.container.formulaire
 
   h2 Formulaire de contact
-  
+    br
+    
     form(action='/contact-us/envoyer-nous-un-petit-mot' method='POST')
+      .form-row
         #contact-email-title
-        label.required(for='title') Title: *
+            label.required(for='title') Title: *
         #uniform-title.input-select.fixedWidth
         span(style='user-select: none;')
         select#title.form-control(name='title' aria-describebdy='title-tooltip')
@@ -29,28 +31,36 @@ head
             option(value='Ms') Ms
             option(value='Lord') Lord
             option(value='Lady') Lady
+        br
         #contact-email--first-name
+            label.required(for='first-name') First name: *
+            input#firstName.form-control(type='text' name='firstname' value='' aria-describebdy='title-name-tooltip')
         
-        label.required(for='first-name') First name: *
-        input#firstName.form-control(type='text' name='firstname' value='' aria-describebdy='title-name-tooltip')
+        br
         #contact-email--last-name
-        label.required(for='last-name') Last name: *
-        input#lastName.form-control(type='text' name='lastname' value='' aria-describebdy='title-name-tooltip')
+            label.required(for='last-name') Last name: *
+            input#lastName.form-control(type='text' name='lastname' value='' aria-describebdy='title-name-tooltip')
+        
+        br
         #contact-email--phone
-        label.required(for='phone') Phone number: *
-        input#phone.form-control(type='tel' name='phone' value='' aria-describebdy='phone-tooltip')
+            label.required(for='phone') Phone number: *
+            input#phone.form-control(type='tel' name='phone' value='' aria-describebdy='phone-tooltip')
+            
+        br
         #contact-email--email-address
-        label.required(for='email-address') Email Adress: *
-        input#email-address.form-control(type='text' name='email' value='' aria-describebdy='email-address-tooltip')
+            label.required(for='email-address') Email Adress: *
+            input#email-address.form-control(type='text' name='email' value='' aria-describebdy='email-address-tooltip')
+            br
         #contact-email--querytype
-        label.required(for='queryType') Please select your query type: *
-        #uniform-queryType.input-select-wide.fixedWidth
-            span(style='user-select: none;') I want a new Volkswagen
-        select#queryType.form-control(name='querytype')
-            option(value='I have a question about technology') I have a question about technology
-            option(value="I'd like to know about Vlokswagen") I&apos;d like to know about Vlokswagen
-            option(value='I want a new Vlokswagen') I want a new Vlokswagen
-            option(value='No one of these? Please write to us') No one of these? Please write to usMs
+            label.required(for='queryType') Please select your query type: *
+            #uniform-queryType.input-select-wide.fixedWidth
+                span(style='user-select: none;') I want a new Volkswagen
+            select#queryType.form-control(name='querytype')
+                option(value='I have a question about technology') I have a question about technology
+                option(value="I'd like to know about Vlokswagen") I&apos;d like to know about Vlokswagen
+                option(value='I want a new Vlokswagen') I want a new Vlokswagen
+                option(value='No one of these? Please write to us') No one of these? Please write to usMs
+        br
         br
         #contact-email--text-area
             label(for='vehicleRegistrationNo')
@@ -60,9 +70,11 @@ head
                 | We&apos;ll use to find your vehicle on our systems
                 .info-tooltip__tooltip-arrow-down(data-arrow-down='' style='transform: rotate(180deg); left: 95%;')
             input#vehicleRegistrationNo.form-control(type='text' name='vehicleRegistrationNo' value='' aria-describebdy='reg-number--tooltip')
+        
         #contact-email--message
             label(for='message') Your message: *
             textarea#message.form-control(name='message' rows='5')
+        br
         br
         a(href='') Privacy Statement
 

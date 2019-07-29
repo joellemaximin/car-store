@@ -10,31 +10,31 @@ let caradminSchema = mongoose.Schema({
         type: String,
         require: true
     }, 
-    reprise: {
+    reprise: [{
         type: String,
         require: true
-    },     
-    options: {
+    }],     
+    options: [{
         type: String,
         require: true
-    },
-    couleurs:{
+    }],
+    couleurs:[{
         type: String,
         require: true
-    },
+    }],
     moteurs: [ {
         type: String,
     } ],
-    places: {
+    places: [{
         type: Number,
         require: true
-    },
-    caution: {
+    }],
+    caution: [{
         type: Number,
-    },
-    finance_and_cost:{
+    }],
+    finance_and_cost:[{
         type: String,
-    },
+    }],
 
 
 });
