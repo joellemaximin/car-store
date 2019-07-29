@@ -10,42 +10,34 @@ let caradminSchema = mongoose.Schema({
         type: String,
         require: true
     }, 
-    car_type: {
+    reprise: {
         type: String,
         require: true
     },     
     options: {
         type: String,
-        options: [{type: mongoose.Schema.Types.ObjectId, ref: 'options'}],
-        require: true,
-    },
-    car_images: {
-        type: String,
-        require: false
+        require: true
     },
     couleurs:{
         type: String,
-        ref: 'couleurs',
         require: true
     },
-    moteur: [ {
+    moteurs: [ {
         type: String,
     } ],
-    finance: {
-        type: String,
-        ref: 'finance_and_cost',
-    },
     places: {
         type: Number,
         require: true
     },
-    carimage: {
+    caution: {
+        type: Number,
+    },
+    finance_and_cost:{
         type: String,
-    }
+    },
 
 
 });
 
 // caradminSchema = caradminSchema._id.toString();
 let Admin = module.exports = mongoose.model('caradmins', caradminSchema);
- 
