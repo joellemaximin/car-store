@@ -1,0 +1,94 @@
+doctype html
+head
+  // Latest compiled and minified CSS
+  link(rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+  // Font awesome
+  script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
+  // Aminate.css
+  //- link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css')
+  script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+#wrapper
+  .title-newsletter
+    h2 #{title}
+  .container
+    .row
+      .col-9
+        ul.nav.nav-pills
+          li.nav-item
+            a.nav-link(href='#') Back to website
+          li.nav-item
+            a.nav-link.disabled(href='#' tabindex='-1' aria-disabled='true') Déconnecter
+
+
+
+      .col-3
+        #v-pills-tab.nav.flex-column.nav-pills(role='tablist' aria-orientation='vertical')
+          ul
+            li 
+              a(href='/admin').btn.btn-outline-primary Liste des voitures
+            li
+              a(href='/admin-comments').btn.btn-outline-primary Liste des commentaires
+            li 
+              a(href='/admin-newsletters').btn.btn-outline-primary Liste des newsletters
+         
+    a.btn.btn-default(href='/admin/add').btn.btn-outline-info Ajouter une voiture :) 
+    br
+    br
+ 
+  .container
+
+  table.table.table-bordered
+    thead
+      tr
+
+        th(scope='col') 
+        th(scope='col') Car Name
+        th(scope='col') Prix
+        th(scope='col') Finance
+        th(scope='col') Couleurs
+        th(scope='col') Options
+        th(scope='col') Moteur
+        th(scope='col') Caution
+        th(scope='col') NB places
+        th(scope='col') Reprises/
+        th(scope='col') Actions
+
+    tbody
+      each car, i in cars
+        tr
+          th(scope='row' )
+          td(href='/cars/'+car._id)= car.car_name
+          td(href='/cars/'+car._id)= car.car_price
+          td(href='/cars/'+car._id)= car.finance_and_cost
+          td(href='/cars/'+car._id)= car.couleurs
+          td(href='/cars/'+car._id)= car.options
+          td(href='/cars/'+car._id)= car.moteurs
+          td(href='/cars/'+car._id)= car.caution
+          td(href='/cars/'+car._id)= car.places
+          td(href='/cars/'+car._id)= car.reprise
+
+          //- td 
+          //-   img(src='http://localhost:3000/admin?imagename=' + car.imageData)
+
+            //- td(src="data:image/png;base64,#{img}")     
+
+          td
+            a.btn.btn-primary(href='/admin/edit/'+car._id type='button') Editer
+            form(action="/admin/delete/" + car._id, method="POST")
+              input(type="hidden", id="deleteId", value=car._id)
+              button(type='button', class="delete").btn.btn-danger Supprimer
+
+ 
+  script(src='../js/caradmin.js')
+
+// enbuild
+ //- img(src='/cars/'+car._id)= img
+          td(href='/cars/'+car._id)= car.image
+
+            //- img(src="data:myImg:image/png;base64,#{img}")     
+
+          //-  img(src=/^data:image\/png;base64,/, 'img')
+          td

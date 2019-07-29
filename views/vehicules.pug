@@ -1,0 +1,106 @@
+doctype html
+head
+  // Font awesome
+  script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
+  // Aminate.css
+  link(rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css')
+  script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  title Volkswagen
+  
+  // Aminate.css
+  link(rel='stylesheet' type='text/css' href='./css/vehicules.css')
+
+
+  header
+  nav.navbar.navbar-expand-lg
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    ul.nav.nav-pills.nav-fill
+      li.nav-item
+        a.nav-link(href='/') Home
+      li.nav-item
+        a.nav-link(href='/all-cars') Vehicules
+      li.nav-item
+        a.nav-link(href='/contact-us') Contactez-nous  
+  body     
+  .content
+    .content-area
+      .top-filter.tfilter-box.margin-b-20
+        .container
+          .row
+            // /.col 4.form-group
+            form(method='GET' action="/all-cars")
+              .col
+                label(for='prix') Selectionner votre prix
+                select.form-control#prix(name="car_price")
+                  option(value="") Choose...
+                  option(value='A partir de 400 euros')
+                    | 400 euros
+                  option(value='A partir de 500 euros')
+                    | 500 euros
+                  option(value='A partir de 270 euros')
+                    |  270 euros
+                  option(value='A partir de 350 euros')
+                    |  350 euros
+                  option(value='A partir de 175 euros')
+                    |  175 euros
+
+              .col
+                label(for='forMoteurs') Selectionner votre moteurs
+                select.form-control#forMoteurs(name="moteurs")
+                  option( value="") Choose...
+                  option(value='Essence')
+                    | Essence
+                  option(value='Electrique')
+                    | Electrique
+                  option(value='Gazoil')
+                    | Gazoil
+                  option(value='Diesel')
+                    | Diesel
+
+              //.col 4
+              .col
+                label(for='forOptions') Selectionner votre option
+                select.form-control#forOptions(name="options")
+                  option( value="") Choose...
+                  option(value='Phares antibrouillard avant avec fonction de virage statique') Phares antibrouillard 
+                  option(value='Climatisation Electronique') Climatisation Electronique
+                  option(value='aAccoudoir central avant') Accoudoir central avant
+                  option(value='Tapis de sol avant et arrière') Tapis de sol avant et arrièredes occupants a l'avant
+                  option(value='Régulateur de vitesse avec limitateur de vitesse') Régulateur de vitesse 
+                  option(value='Pack lumière et vision') Pack lumière et vision
+                  option(value='Aide au stationnement y compris avec capteurs') Aide au stationnement y compris avec capteurs
+                  option(value='Installation personnalisé') Installation personnalisé
+                  option(value='Kit électronique info') Kit électronique info
+                  option(value='Barre de toit') Barre de toit
+              .col
+                button.btn.btn-primary.site-btn2(type='submit',value='Submit') Submit
+    
+  h2.title-page Different types de voitures
+  .clearfix
+
+  section.liste-des-offres
+    each car, i in cars
+      .container-fluid.row
+        div.imgvolkswagen.col-md-6
+          //- img.img-top.img-fluid.col(src='/cars/'+car._id)= car.car_images     
+          img.img-top.img-fluid(src='./images/e-Golf.png', alt='...')
+        div.descriptifvolkswagen.col-md-6
+          div.text-group-volkswa
+            h5.title(href='/cars/'+car._id)= car.car_name
+            p.text(href='/cars/'+car._id)= car.car_price 
+            p.textReprise(href='/cars/'+car._id)= car.reprise
+
+            a.btn.btn-carid(href='/all-cars/car/'+car._id) Je découvre l'offre
+
+// Footer
+#contentGlobal-footer(style='background-color:lightgray;')
+  .clearfix
+    p.title-footer(href='#') Map  
+
+  script(src='./js/filtercar.js')
+
+// enbuild

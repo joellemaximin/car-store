@@ -1,0 +1,128 @@
+doctype html
+head
+  // Font awesome
+  script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
+  // Aminate.css
+  link(rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css')
+  script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  link(rel='stylesheet' type='text/css' href='../../vehicule.css')
+  title Vehicule
+  
+  nav.navbar.navbar-expand-lg.navoo
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    ul.nav.nav-pills.nav-fill
+      li.nav-item
+        a.nav-link.link(href='/') Home
+      li.nav-item
+        a.nav-link.link(href='/all-cars') Vehicules
+      li.nav-item
+        a.nav-link.link(href='/contact-us') Contactez-nous
+
+  .container
+    section.img-car-about
+      img.img-fluid(src='../../images/e-Up.png', alt='Responsive image')
+    
+    .container-fluid
+      div
+        .model-offer-details-filter
+          ul.list-of-offers.nav.nav-tabs#myTab(role="tablist")
+            li.nav-item.nodetails.active(role='offer')
+              a.nav-link(href='#optionfinance', aria-controls='optionfinance', role='tab', data-toggle='tab') Options Financière
+            li.nav-item.nodetails(role='offer')
+              a.nav-link(href='#optioncar', aria-controls='optioncar', role='tab', data-toggle='tab') Accessoires
+            li.nav-item.nodetails(role='offer')
+              a.nav-link(href='#optionrent', aria-controls='optionrent', role='tab', data-toggle='tab') Formulaire pour Louer
+
+          .tab-content.model-offer-details-content
+            #optionfinance.tab-pane.active(role='tabpanel')
+              .row
+                h3.col-md-4.model-offer-details__subtab-title Finance, Solutions, Caution
+                div.col-md-8.place-content
+                  
+                  ul 
+                    li 
+                      h2= car.car_name
+
+                    li Le montant par mois
+                      p= car.car_price
+
+                    li 
+                    i.fas.fa-car-sidePour votre dépôt de caution avec Solutions PCP est de
+                      p= car.caution 
+
+                    li Location longue Durée sur : 
+                      p= car.finance_and_cost
+                    
+                    strong.textR= car.reprise
+
+                    
+                    div
+                      h3.terms-and-condition
+                        #termsPreventaccordion.accordion
+                          h2
+                            a.btn.btn-link(data-toggle='collapse', data-target='#collapseAccordion', aria-expanded='false', aria-controls='collapseAccordion')
+                              | Termes et conditions
+                        #collapseAccordion.collapse.hide( data-parent='#termsPreventaccordion')
+                          .card-body
+                            | † À la fin de la convention, trois options sont disponibles: i) payer le paiement final optionnel et devenir propriétaire du véhicule; ii) restituer le véhicule: sous réserve de kilométrage excessif et d'usure normale, des frais peuvent être facturés; ou iii) remplacer: échange de pièce du véhicule
+
+                            | 1 750 £ de versement sur votre dépôt à l’achat sur Solutions PCP.
+
+                            | 2 Frais d'acceptation non requis.
+
+                            | 3Payable à la fin de votre contrat.
+
+                            |  Avec Solutions Plan de contrat personnel. Dépôt de client de 15% requis. 18s +. Sous réserve de statut et de disponibilité. Les conditions s'appliquent. Disponible sur e-Golf uniquement. Offre disponible sur commande du 30/09/19 des détaillants participants. Des indemnités peuvent être requises. Non cumulable avec toute autre offre et peut être retiré à tout moment. Précis au moment de la publication le 01/07/19. Service Financier Volkswagen Volkswagen
+
+                                                  
+                    button.testdrivebutton Essaie de voiture
+
+
+            #optioncar.tab-pane(role='tabpanel') 
+              .row
+                h3.col-md-4.model-offer-details__subtab-title Options Intérieurs, le moteur
+                div.col-md-8.place-content  
+                  ul
+                    li Moteurs pour ce modèle:
+                      p= car.moteurs
+
+                    li Nos options:
+                      p= car.options
+                                        
+                    li Financement possible:
+                      p= car.finance_and_cost
+                    
+                    li Nombre de places:
+                      p= car.places
+
+                    button.descriptioncarbutton Voir les détails de la voiture
+
+
+            #optionrent.tab-pane(role='tabpanel') 
+              .row
+                h3.col-md-4.model-offer-details__subtab-title Louer la voiture
+                div.col-md-8.place-content
+                  h4 Location
+                    br
+                    
+                    button.reservationcar Louer une voiture
+
+          
+
+    // Footer
+    #contentGlobal-footer(style='background-color:lightgray;')
+      .clearfix
+      p.title-footer(href='#') Map  
+
+
+  script(src='../../js/filter.js')
+
+script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+
+// enbuild

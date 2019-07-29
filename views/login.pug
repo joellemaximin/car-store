@@ -1,0 +1,33 @@
+doctype html
+head
+  // Latest compiled and minified CSS
+  link(rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+  // Font awesome
+  script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
+  // Aminate.css
+  //- link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css')
+  //- script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+  link(rel='stylesheet' type='text/css' href='/css/comments.css')
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  link(rel='stylesheet' type='text/css' href='../styles.css')
+
+  #wrapper
+    .title-register
+      h2 Se connecter
+    form(method='POST' action='/users/authenticate')
+      .login-form
+        .form-group.row
+          label.col-sm-2.col-form-label Username
+          .col-sm-10
+            input.form-control(type='text', name='username')
+        
+        .form-group.row
+          label.col-sm-2.col-form-label(for='inputPassword') Password
+          .col-sm-10
+            input.form-control(type='password', placeholder='Password' name='password')
+
+        br
+        input(type='submit', value='Login')
+// enbuild

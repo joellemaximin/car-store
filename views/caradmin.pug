@@ -1,0 +1,38 @@
+doctype html
+head
+  // Latest compiled and minified CSS
+  link(rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+  // Font awesome
+  script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
+  // Aminate.css
+  //- link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css')
+  //- script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+#wrapper
+  .title-newsletter
+    h2 #{title}
+    br
+    h2 
+    a.btn.btn-default(href='/edit/'+car._id) Editer
+    //- a.btn.btn-danger.delete-car(href='#',data-id=car._id) Supprimer
+
+  .container
+    p(href='/cars/'+car._id)= car.car_name
+    p(href='/cars/'+car._id)= car.car_price
+    p(href='/cars/'+car._id)= car.car_type
+    p(href='/cars/'+car._id)= car.car_jante
+    p(href='/cars/'+car._id)= car.options
+    p(href='/cars/'+car._id)= car.moteurs
+    p(href='/cars/'+car._id)= car.places
+    img(src='/cars/'+car._id)= car.myImg
+
+    //- img(src='/'+ car._id)= car.upload
+        car.upload = req.file.filename
+    //- img.uploaded-image(src='<%= path %>', alt='Image name: <%= path %>')
+
+
+// enbuild
+

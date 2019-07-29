@@ -1,0 +1,200 @@
+doctype html
+head
+  //- Latest compiled and minified CSS
+  // Latest compiled and minified CSS
+  link(rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+  // Font awesome
+  script(defer='' src='https://use.fontawesome.com/releases/v5.0.9/js/all.js' integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl' crossorigin='anonymous')
+  script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+
+  // Aminate.css
+  link(rel='stylesheet' type='text/css' href='./styles.css')
+  style. 
+    a{
+      color : #000;
+    },
+    #side-menu{
+      display: none;
+    }
+
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  title Volkswagen
+  
+body
+
+nav.navbar.navbar-expand-lg
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+  ul.nav.nav-pills.nav-fill
+    li.nav-item
+      a.nav-link(href='/') Home
+    li.nav-item
+      a.nav-link(href='/all-cars') Vehicules
+    li.nav-item
+      a.nav-link(href='/contact-us') Contactez-nous  
+    //- #side-menu.side-nav.cacher
+    //-   a.nav-link(href='#' onclick='closeSlideMenu()') &times;
+    //-   a.nav-link(href='index.html') Home
+    //-   a.nav-link(href='vehicules.html') Vehicules
+    //-   a.nav-link(href='car-finance.html') Offer and Finance
+    //-   a.nav-link(href='contact.html') Contact
+// panel Icons begin
+.container
+  #changePhoto.carousel.slide(data-ride='carousel')
+    .carousel-inner
+      .carousel-item.active
+        img.d-block.w-100(src='images/passat.png', alt='...')
+      .carousel-item
+        img.d-block.w-100(src='images/e-Golf.png', alt='...')
+      .carousel-item
+        img.d-block.w-100(src='images/e-Up.png', alt='...')
+    a.carousel-control-prev(href='#changePhoto', role='button', data-slide='prev')
+      span.carousel-control-prev-icon(aria-hidden='true')
+      span.sr-only Previous
+    a.carousel-control-next(href='#changePhoto', role='button', data-slide='next')
+      span.carousel-control-next-icon(aria-hidden='true')
+      span.sr-only Next
+
+br
+.contentGlobale-index
+  .headerTitle
+    h3 #{title}
+  // Create an array with all the cars
+  #indexGallery.container
+    each car, i in cars
+      .row.displayCars
+        .border-0.transform-on-hover
+          //- img.card-img-top.img-fluid.col(src='/cars/'+car._id)= car.car_images     
+          .card-body
+            h5.card-title(href='/cars/'+car._id)= car.car_name
+            img(src='/myImg')
+            h4 
+              a.btn.btn-carid(href='/all-cars/car/'+car._id) Voir plus
+
+  // POPUP prendre rendez vous
+  div#backmodal(displayed="false")
+    .container-wide#formpopup.modal
+      span.closeBtnn &times;
+      h2.title-modal Prenez dès à présent un rendez-vous avec l'un de nos conseillers.
+
+      form(method='POST' id='#' action="/contact-us/envoyer-nous-un-petit-mot")
+        #contactus-form
+          .form-group
+            label#label-email Email:
+            input.form-control.col-md-8(type='text' name="email" id="email")
+          .form-group
+            label#label-name Nom/Prénom:
+            input.form-control.col-md-8(type='text' name="firstname" id="firstname")
+          .form-group
+            label#label-tel Numéro de téléphone:
+            input.form-control.col-md-6(type='text' name="phone" id="phone")
+          //- .form-group
+          //-   label Date de rendez-vous:
+          //-   input.form-control.col-md-4(type='date')
+    
+          input.btn.btn-sendmodal(type='submit',value='Envoyez' )
+  div
+    span.message#welcomeMessage
+
+  // ARTICLE content
+  section#contentGlobale-article
+    .container-lg.row
+      section#adventure.col-md-6
+        h3.title-article Volkswagen and environment
+        h3.bodyText
+          | The amount of Vehicle Excise Duty (Road Fund Licence) payable on new cars varies depending on the level of CO2 (Carbon Dioxide)
+          | emissions produced by the vehicle and the type of fuel used.
+          | Discover the &lsquo;CO2 banding&rsquo; and therefore, the amount of Vehicle Excise Duty payable on our Eco2 range.
+        a.bodyText.bodyLink(href='volkswagen and environment.html') Find out more
+      section#history.col-md-6
+        h3.title-article History
+        h3.bodyText
+          | 1899: Volkswagen Freres is founded by Louis&rsquo; two brothers, Marcel and Fernand.
+          | 1900: The world&rsquo;s first saloon arrives in the market, the type B.
+          | 1902: Volkswagen produces its first engine and files a patent for the first turbo.
+          | 1903: The sales network expands and the first subsidiaries are set up outside France.
+        a.bodyText.bodyLink(href='history.html') Find out more
+  
+  
+  // CUSTOMER content
+  #contentGlobal-customers
+    a.container-lg
+      button#commonbutton.common-button--default Our clients
+      ul.overlay
+        li
+          img.spotify(src='images/icons8-spotify.png' alt='spotify')
+        li
+          img.facebook(src='images/icons8-facebook.png' alt='lyft')
+        li
+          img.slack(src='images/icons8-slack.png' alt='slack')
+        li
+          img.mac(src='images/icons8-client-mac.png' alt='mac')
+
+  //modal clientsList
+  div#iconmodal
+    .container-wide.iimodal
+      span.closeBtn &times;
+      h2.title-modal Liste de clients fidèles
+        ul.row
+          li.col-lg-6
+            .imageList 
+              img.imge(src='images/icons8-spotify.png' alt='spotify')
+              h3 Spotify
+          
+          li.col-lg-6
+            .imageList 
+              img.imge(src='images/icons8-facebook.png' alt='facebook')
+              h3 Facebook
+          
+          li.col-lg-6
+            .imageList 
+              img.imge(src='images/icons8-slack.png' alt='slack')
+              h3 Slack
+         
+          li.col-lg-6
+            .imageList 
+              img.imge(src='images/icons8-client-mac.png' alt='mac')
+              h3 Apple
+  
+  // display comments per user
+  h2.comment-title Commentaires
+    ol.comments-list#comments
+      each comment, i in comments
+        li.comment
+          div.comment-wrap
+            div.comment-body
+              div.comment-author-wrap
+                h3.comment-author(href='/comments/'+comment._id)= comment.last_name
+                p.comment-time(href='/comments/'+comment._id)= comment.date
+              div.comment-content-wrap
+                p.comment-text(href='/comments/'+comment._id)= comment.body
+  
+
+
+
+  // beforeFooter
+  #contentGlobal-beforeFooter
+    .container-lg.row
+      #contentFooter.col
+        h1.titleBeforeFooter
+          span Are you ready for the adventure ? 
+          br
+          span Contact us ou create your account.
+      #contentLink.col
+        a#signup(href='/users/register') S'enregister
+        a#contactUss(href='/contact-us') Contacter our company
+  // Footer
+  #contentGlobal-footer(style='background-color:lightgray;')
+    .clearfix
+      p.title-footer(href='#') Map  
+  
+  script(src='./js/modal.js')
+
+  //- script(src='js/index.js')
+  //- script(src='/bower_components/jquery/dist/jquery.js')
+  // enbuild
+    
+script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
