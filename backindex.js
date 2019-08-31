@@ -1,10 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
-const config = require ('./config/database');
-mongoose.connect(process.env.MONGODB_URI || config.database);
-let db = mongoose.connection;
 require('dotenv').config()
+
+var uri = "mongodb+srv://jojo:12345@cluster0-bse2l.mongodb.net/test?retryWrites=true&w=majority";
+mongoose.connect(uri, {useNewUrlParser: true});
+var db = mongoose.connection;
+
+// const config = require ('./config/database');
+// mongoose.connect(process.env.MONGODB_URI, config.database);
+// let db = mongoose.connection;
 
 var nodemailer = require('nodemailer');
 
