@@ -2,8 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 const config = require ('./config/database');
-mongoose.connect(config.database);
+mongoose.connect(process.env.MONGODB_URI || config.database);
 let db = mongoose.connection;
+require('dotenv').config()
+
 var nodemailer = require('nodemailer');
 
 // check connection
@@ -330,20 +332,9 @@ app.get('/reserver-une-voiture', function(req, res){
 //     });
 // });
 
-app.listen(3000, function(error){
-    if(!error) console.log("everything works");
-});
+// app.listen(3000, function(error){
+//     if(!error) console.log("everything works");
+// });
 
-// client.connect(err => {
-    //     const collection = client.db("test").collection("caradmins");
-    //     // perform actions on the collection object
-        
-
-    // collection.findOne({'_id': ObjectId(filename)}, function(err, results){
-    //     console.log(results)
-    //     console.log(results.myImg.contentType)
-    //     res.setHeader('content-type', results.myImg.contentType);
-    //          res.send(results.myImg.data.buffer);
-    //       });
-    //    });
-    //    client.close();
+const port = process.env.PORT || 3000;
+app.listen(port);
