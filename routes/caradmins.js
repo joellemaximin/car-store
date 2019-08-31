@@ -5,7 +5,7 @@ let router = express.Router();
 
 const MongoClient = require('mongodb').MongoClient;
 const ObjectId = require('mongodb').ObjectId;
-const config = require ('../config/database');
+// const config = require ('../config/database');
 // const mongoose = require("mongoose");
 // mongoose.connect(config.database)
 // let db = mongoose.connection;

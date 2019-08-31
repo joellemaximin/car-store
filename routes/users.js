@@ -90,7 +90,7 @@
 // });
 // module.exports = router;
 
-const config = require('../config/database');
+// const config = require('../config/database');
 const jwt = require('jsonwebtoken'); 
 const bcrypt = require('bcryptjs'); 
 let   User     = require('../models/user');
