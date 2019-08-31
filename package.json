@@ -5,7 +5,7 @@
   "main": "backindex.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "nodemon backindex.js"
+    "start": "nodemon backindex.js"
   },
   "repository": {
     "type": "git",
@@ -33,10 +33,12 @@
     "express-messages": "^1.0.1",
     "express-session": "^1.16.1",
     "express-validator": "^5.3.1",
+    "formidable": "^1.2.1",
+    "fs": "0.0.1-security",
     "heroku": "^7.26.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.5.9",
-    "multer": "^1.4.1",
+    "multer": "^1.4.2",
     "node-install": "^2.1.2",
     "nodemailer": "^6.2.1",
     "nodemon": "^1.19.1",
@@ -46,7 +48,6 @@
     "path": "^0.12.7",
     "pug": "^2.0.3",
     "router": "^1.3.3",
-    "sqlite3": "^4.0.8",
     "swig": "^1.4.2"
   }
 }

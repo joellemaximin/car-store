@@ -1,14 +1,10 @@
 const express = require("express");
-const path = require("path");
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
-const cors = require('cors')
-const multer = require('multer');
 const config = require ('./config/database');
 mongoose.connect(config.database);
 let db = mongoose.connection;
-
- 
+var nodemailer = require('nodemailer');
 
 // check connection
 db.once('open', ()=> {
@@ -21,6 +17,8 @@ db.on('error', function(err){
 }); 
 
 var app = express();
+const path = require("path");
+const cors = require('cors')
 
 //parse application
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -33,7 +31,7 @@ app.use(express.static('./public'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-
+// app.use('/uploads', express.static(uploads));
 // var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('passport');
@@ -59,47 +57,11 @@ const {
 // });
 
 
-// //set Storage Engine for multer
-// const storage = multer.diskStorage({
-//     destination: './public/uploads/',
-//     filename: function(req, file, cb){
-//         cb(null, file.fieldname + '-' + Date.now() +
-//         path.extname(file.originalname));
-//     }
-// });
-
-// //Init upload
-// const upload = multer({
-//     storage: storage,
-//     limits: {fileSize: 1000000},
-//     fileFilter: function(req, file, cb){
-//         checkFileType(file, cb)
-//     }
-// }).single('myImg');
-
-// // //check file type
-// function checkFileType(file, cb){
-//     const filetypes = /jpeg|jpg|png|gif/;
-//     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-//     const mimetype = filetypes.test(file.mimetype);
-
-//     if(mimetype && extname) {
-//         return cb(null, true);
-//     } else {
-//         cb('Error: Images Accepté seulement');
-//     }
-// }
 
 
 // let Car = require('./models/cars');
 let Contact = require('./models/contact');
-let CarOption = require('./models/caroptions');
-let CarCouleurs = require('./models/couleurs');
-// let concessionaire = require('./models/concessionaire');
-let CarType = require('./models/cartype');
-let CarMoteur = require('./models/carmoteur');
-// let Fin = require('./models/finance');
-// let CarGeneration = require('./models/cargeneration');
+
 let User = require('./models/user');
 // let Newsletter = require('./models/newsletter');
 let Comment = require('./models/comments');
@@ -109,15 +71,10 @@ let Admin = require('./models/admin');
 
 // Les models
 var Users = mongoose.model('users');
-// var Cars = mongoose.model('carmodelees');
-var Options = mongoose.model('options');
-var Couleurs = mongoose.model('couleurs');
-var Types = mongoose.model('cartypes');
 var Contacts = mongoose.model('contacts');
-// var Jantes = mongoose.model('jantes');
-var Moteurs = mongoose.model('moteurs');
 var Comments = mongoose.model('comments');
 var Admins = mongoose.model('caradmins');
+
 
 // var generations = mongoose.model('cargenerations');
 
@@ -176,14 +133,14 @@ app.use('/contact-us', contacts);
 // let cars = require('./routes/cars');
 // app.use('/all-cars', cars);
 
-let options = require('./routes/caroptions');
-app.use('/car-options', options);
+// let options = require('./routes/caroptions');
+// app.use('/car-options', options);
 
 let caradmins = require('./routes/caradmins');
 app.use('/admin', caradmins);
 
-let commadmins = require('./routes/commentadmin');
-app.use('/admin-comments', commadmins); 
+// let commadmins = require('./routes/commentadmin');
+// app.use('/admin-comments', commadmins); 
  
 
 // let usersdmins = require('./routes/newslettersadmins');
@@ -206,28 +163,66 @@ app.get('/', function(req, res){
                     });
                 }
             });
-    });
+    }).limit(4);
+
+    
 
 });
 
-
+//display the cars by params from document
 app.get('/all-cars', function(req, res){
-    Admin.find({}, function(err, cars){
-        
-        if(err){
-            console.log(err);
-        } else {
-            // console.log(cars);
+    console.log(req.query)
+    if (req.query.moteurs || req.query.car_price || req.query.options){
+        Admin.find({$or: [{moteurs: req.query.moteurs }, {car_price: req.query.car_price}, {options: req.query.options}]
+        }, function(err, cars){         
+        console.log(req.query)
+         // console.log(cars);
             res.render('vehicules', {
-               title: 'Toutes nos voitures',
-               cars: cars
+                title: 'Toutes nos voitures',
+                cars: cars
             });
-        }
-    });
+        
+        });
+    }
+    // if (req.query.moteurs && req.query.car_price ) {
+    //     Admin.find({$and: [{moteurs: req.query.moteurs }, {car_price: req.query.car_price}]}, function(err, cars){         
+          
+    //         // console.log(cars);
+    //         res.render('vehicules', {
+    //             title: 'Toutes nos voitures',
+    //             cars: cars
+    //         });
+        
+    //     });
+    // }
+    // if (req.query.options) {
+    //     Admin.find({options: req.query.options}, function(err, cars){
+    //         // console.log(cars);
+    //         res.render('vehicules', {
+    //             title: 'Toutes nos voitures',
+    //             cars: cars
+    //         });
+        
+    //     });
+    // }
+    else {
+        Admin.find({}, function(err, cars){
+         
+            if(err){
+                console.log(err);
+            } else {
+                // console.log(cars);
+                res.render('vehicules', {
+                   title: 'Toutes nos voitures',
+                   cars: cars
+                });
+            }
+        });
+    }
 });
 
 
-
+//display one car
 app.get('/all-cars/car/:id', function(req, res){
     Admin.findById(req.params.id, function(err, car){
         // console.log(car);
@@ -285,9 +280,70 @@ app.get('/reserver-une-voiture', function(req, res){
     });
 });
 
-//route for filter for cars, for all of them
 
+// // send mail with defined transport object
+// app.post('/', function(req, res){
+//     let contact = new Contact();
+//     contact.firstname = req.body.firstname;
+//     contact.email = req.body.email;
+//     contact.phone = req.body.phone;
+
+//     contact.save(function(err){
+//         if(err){
+//             console.log(err);
+//             // res.render('error')
+//             return;
+//         } else {
+//             //votre message est bien envoyé
+//             res.redirect('/');
+//         }
+//     });
+      
+// let transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//         user: 'joe.maximuum@gmail.com', // generated ethereal user
+//         pass: 'objectif2312' // generated ethereal password
+//     },
+//     tls: {
+//     rejectUnauthorized: false
+//   }
+// });
+
+// // send mail with defined transport object
+//     let mailOptions = {
+//         from: '"Bienvenue chez LOCAVWATI, Merci de choisir notre service, un de nos conseillers prendra contact avec vous dans un instant." <joe.maximuum@gmail.com>', // sender address
+//         to: req.body.email, // list of receivers
+//         subject: "LocaVWATI Demande de rendez-vous", // Subject line
+//          text:'from Name:'+ req.body.firstname + 'Email:'+req.body.email + 'Numéro:' + req.body.phone,
+//         html:'<p>Nom/Prénom:'+ req.body.firstname+', Email:'+req.body.email+',Numéro:' + req.body.phone+ '</li></ul>',
+//     };
+
+//     transporter.sendMail(mailOptions, (error, info) => {
+//         if (error){
+//             return console.log(error);
+//         } else {
+//             console.log('Email: '+ info.response)
+//             res.redirect('/');
+//         }
+//         //ajouter un message disant bien envoyé
+//     });
+// });
 
 app.listen(3000, function(error){
     if(!error) console.log("everything works");
 });
+
+// client.connect(err => {
+    //     const collection = client.db("test").collection("caradmins");
+    //     // perform actions on the collection object
+        
+
+    // collection.findOne({'_id': ObjectId(filename)}, function(err, results){
+    //     console.log(results)
+    //     console.log(results.myImg.contentType)
+    //     res.setHeader('content-type', results.myImg.contentType);
+    //          res.send(results.myImg.data.buffer);
+    //       });
+    //    });
+    //    client.close();
