@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config()
 
 var uri = "mongodb+srv://jojo:12345@cluster0-bse2l.mongodb.net/test?retryWrites=true&w=majority";
-mongoose.connect(uri, {useNewUrlParser: true});
+mongoose.connect(uri || process.env.MONGODB_URI);
 var db = mongoose.connection;
 
 // const config = require ('./config/database');

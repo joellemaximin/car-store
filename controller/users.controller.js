@@ -20,7 +20,7 @@ function getAuthenticate(req, res) {
 
 function authenticate(req, res, next) {
     userService.authenticate(req.body)
-        .then(user => user ? res.json(user) : res.status(400).json({ message: 'Username or password is incorrect' }))
+        .then(user => user ? res.render("clients") : res.status(400).json({ message: 'Username or password is incorrect' }))
         .catch(err => next(err));
 }
 
@@ -30,7 +30,7 @@ function getRegister(req, res) {
 
 function register(req, res, next) {
     userService.create(req.body)
-        .then(() => res.json({}))
+        .then(() => res.redirect("clients"))
         .catch(err => next(err));
 }
 
